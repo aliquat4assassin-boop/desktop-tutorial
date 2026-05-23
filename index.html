@@ -1,0 +1,4149 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="صيدلية الفتح">
+<meta name="theme-color" content="#007AFF">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23007AFF'/%3E%3Cstop offset='1' stop-color='%235856D6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='180' height='180' rx='40' fill='url(%23g)'/%3E%3Cg fill='white' stroke='white'%3E%3Crect x='40' y='35' width='100' height='115' rx='12' fill='none' stroke-width='5'/%3E%3Crect x='52' y='48' width='76' height='22' rx='4' fill='white' opacity='0.95'/%3E%3Ctext x='124' y='65' text-anchor='end' font-size='16' font-weight='700' fill='%231F4E78' font-family='Arial'%3E1234.56%3C/text%3E%3Cg font-size='20' font-weight='700' font-family='Arial' text-anchor='middle'%3E%3Ctext x='65' y='95'%3E7%3C/text%3E%3Ctext x='90' y='95'%3E8%3C/text%3E%3Ctext x='115' y='95'%3E9%3C/text%3E%3Ctext x='65' y='118'%3E4%3C/text%3E%3Ctext x='90' y='118'%3E5%3C/text%3E%3Ctext x='115' y='118'%3E6%3C/text%3E%3Ctext x='65' y='141' fill='%23FFD60A'%3E%2B%3C/text%3E%3Ctext x='90' y='141' fill='%2334C759'%3E%E2%88%92%3C/text%3E%3Ctext x='115' y='141' fill='%23FF3B30'%3E%3D%3C/text%3E%3C/g%3E%3C/g%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23007AFF'/%3E%3Cstop offset='1' stop-color='%235856D6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='180' height='180' rx='40' fill='url(%23g)'/%3E%3Cg fill='white' stroke='white'%3E%3Crect x='40' y='35' width='100' height='115' rx='12' fill='none' stroke-width='5'/%3E%3Crect x='52' y='48' width='76' height='22' rx='4' fill='white' opacity='0.95'/%3E%3Ctext x='124' y='65' text-anchor='end' font-size='16' font-weight='700' fill='%231F4E78' font-family='Arial'%3E1234.56%3C/text%3E%3Cg font-size='20' font-weight='700' font-family='Arial' text-anchor='middle'%3E%3Ctext x='65' y='95'%3E7%3C/text%3E%3Ctext x='90' y='95'%3E8%3C/text%3E%3Ctext x='115' y='95'%3E9%3C/text%3E%3Ctext x='65' y='118'%3E4%3C/text%3E%3Ctext x='90' y='118'%3E5%3C/text%3E%3Ctext x='115' y='118'%3E6%3C/text%3E%3Ctext x='65' y='141' fill='%23FFD60A'%3E%2B%3C/text%3E%3Ctext x='90' y='141' fill='%2334C759'%3E%E2%88%92%3C/text%3E%3Ctext x='115' y='141' fill='%23FF3B30'%3E%3D%3C/text%3E%3C/g%3E%3C/g%3E%3C/svg%3E">
+<title>صيدلية الفتح - إدارة الديون</title>
+
+<!-- مكتبات توليد PDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.0/jspdf.plugin.autotable.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+  html, body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Arabic', 'SF Arabic', 'Segoe UI', Tahoma, sans-serif;
+    background: #F2F2F7;
+    color: #000;
+    overflow-x: hidden;
+    overscroll-behavior-y: none;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-top: env(safe-area-inset-top);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body { background: #000; color: #fff; }
+    .card, .nav-bar, .tab-bar, .stat-card { background: #1C1C1E !important; }
+    .list-row + .list-row, .input-row + .input-row { border-color: rgba(255,255,255,0.1) !important; }
+    .input-card { background: #1C1C1E !important; }
+    .row-title, .input-label { color: #fff !important; }
+    .nav-title { color: #fff; }
+    .search-box { background: rgba(255,255,255,0.1) !important; }
+    .row-sub, .stat-label { color: #8E8E93 !important; }
+  }
+
+  .app-container {
+    max-width: 500px;
+    margin: 0 auto;
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 90px;
+  }
+
+  .nav-bar {
+    background: rgba(248,248,248,0.94);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 0.5px solid rgba(60,60,67,0.18);
+  }
+
+  .nav-title {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+
+  .nav-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(120,120,128,0.16);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #007AFF;
+    cursor: pointer;
+  }
+
+  .screen {
+    padding: 8px 0 20px;
+    display: none;
+  }
+  .screen.active { display: block; }
+
+  .hero-card {
+    margin: 12px 16px;
+    padding: 20px;
+    background: linear-gradient(135deg, #007AFF 0%, #5856D6 100%);
+    border-radius: 20px;
+    color: white;
+  }
+  .hero-label {
+    font-size: 13px;
+    opacity: 0.85;
+  }
+  .hero-value {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin: 6px 0 14px;
+  }
+  .hero-stats {
+    display: flex;
+    gap: 10px;
+    padding-top: 12px;
+    border-top: 0.5px solid rgba(255,255,255,0.25);
+  }
+  .hero-stat {
+    flex: 1;
+    text-align: center;
+  }
+  .hero-stat-label {
+    font-size: 11px;
+    opacity: 0.85;
+  }
+  .hero-stat-val {
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 2px;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 0 16px 12px;
+  }
+
+  .stat-card {
+    background: white;
+    border-radius: 14px;
+    padding: 14px;
+  }
+  .stat-label {
+    font-size: 12px;
+    color: #8E8E93;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 4px;
+  }
+  .stat-value {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+  }
+
+  .section-header {
+    font-size: 13px;
+    font-weight: 400;
+    color: #8E8E93;
+    padding: 16px 22px 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .section-header a {
+    color: #007AFF;
+    text-decoration: none;
+    font-size: 13px;
+    text-transform: none;
+    cursor: pointer;
+  }
+
+  .card {
+    background: white;
+    border-radius: 14px;
+    margin: 0 16px;
+    overflow: hidden;
+  }
+
+  .list-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .list-row:active { background: rgba(0,0,0,0.05); }
+  .list-row + .list-row {
+    border-top: 0.5px solid rgba(60,60,67,0.12);
+    margin-right: 60px;
+    padding-right: 0;
+  }
+  .list-row + .list-row {
+    border-top: 0.5px solid rgba(60,60,67,0.12);
+  }
+
+  .avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .avatar.lg { width: 72px; height: 72px; font-size: 22px; }
+
+  .row-content {
+    flex: 1;
+    min-width: 0;
+  }
+  .row-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: #000;
+    margin-bottom: 2px;
+  }
+  .row-sub {
+    font-size: 12px;
+    color: #8E8E93;
+  }
+  .row-end {
+    text-align: left;
+    flex-shrink: 0;
+  }
+  .row-amount {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+  }
+  .status-badge {
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 6px;
+    margin-top: 3px;
+    display: inline-block;
+    font-weight: 500;
+  }
+
+  .tab-bar {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 500px;
+    background: rgba(248,248,248,0.94);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 0.5px solid rgba(60,60,67,0.18);
+    display: flex;
+    justify-content: space-around;
+    padding: 6px 0 calc(6px + env(safe-area-inset-bottom));
+    z-index: 100;
+  }
+
+  .tab-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    padding: 6px 4px;
+    cursor: pointer;
+    color: #8E8E93;
+    transition: color 0.2s;
+  }
+  .tab-item.active { color: #007AFF; }
+  .tab-item svg { width: 24px; height: 24px; }
+  .tab-item span { font-size: 10px; font-weight: 500; }
+
+  .search-box {
+    margin: 4px 16px 8px;
+    padding: 9px 12px;
+    background: rgba(120,120,128,0.12);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .search-box input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-size: 14px;
+    outline: none;
+    color: inherit;
+    font-family: inherit;
+  }
+  .search-box input::placeholder { color: #8E8E93; }
+
+  .filter-chips {
+    display: flex;
+    gap: 6px;
+    padding: 4px 16px 10px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .filter-chips::-webkit-scrollbar { display: none; }
+
+  .chip {
+    background: white;
+    padding: 7px 14px;
+    border-radius: 14px;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+    cursor: pointer;
+    border: none;
+    color: inherit;
+    transition: all 0.2s;
+  }
+  .chip.active { background: #007AFF; color: white; }
+
+  .fab {
+    position: fixed;
+    bottom: 80px;
+    left: 16px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #007AFF;
+    color: white;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(0,122,255,0.4);
+    z-index: 99;
+  }
+
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 1000;
+    display: none;
+    align-items: flex-end;
+    justify-content: center;
+  }
+  .modal-overlay.active { display: flex; }
+
+  .modal {
+    background: #F2F2F7;
+    width: 100%;
+    max-width: 500px;
+    max-height: 90vh;
+    border-radius: 16px 16px 0 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .modal-header {
+    background: rgba(248,248,248,0.94);
+    backdrop-filter: blur(20px);
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 0.5px solid rgba(60,60,67,0.18);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .modal-title { font-size: 17px; font-weight: 600; }
+  .modal-btn {
+    background: none;
+    border: none;
+    color: #007AFF;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 4px 8px;
+  }
+  .modal-btn.bold { font-weight: 600; }
+  .modal-btn:disabled { opacity: 0.4; }
+
+  .modal-body { padding: 16px; }
+
+  .type-toggle {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .type-btn {
+    flex: 1;
+    padding: 14px;
+    background: white;
+    border-radius: 14px;
+    font-size: 14px;
+    font-weight: 600;
+    border: 2px solid transparent;
+    cursor: pointer;
+    color: #8E8E93;
+    transition: all 0.2s;
+    font-family: inherit;
+  }
+  .type-btn.active.debt {
+    background: rgba(255,59,48,0.1);
+    color: #FF3B30;
+    border-color: #FF3B30;
+  }
+  .type-btn.active.pay {
+    background: rgba(52,199,89,0.1);
+    color: #34C759;
+    border-color: #34C759;
+  }
+
+  .amount-display {
+    text-align: center;
+    margin: 16px 0;
+  }
+  .amount-label {
+    font-size: 12px;
+    color: #8E8E93;
+    margin-bottom: 6px;
+  }
+  .amount-input {
+    font-size: 42px;
+    font-weight: 700;
+    border: none;
+    background: transparent;
+    text-align: center;
+    width: 100%;
+    outline: none;
+    color: #FF3B30;
+    font-family: inherit;
+    letter-spacing: -1px;
+  }
+  .amount-input.pay { color: #34C759; }
+
+  .input-card {
+    background: white;
+    border-radius: 14px;
+    margin-bottom: 12px;
+    overflow: hidden;
+  }
+
+  .input-row {
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .input-row + .input-row {
+    border-top: 0.5px solid rgba(60,60,67,0.12);
+  }
+
+  .input-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    color: #000;
+  }
+  .input-label .icon-box {
+    width: 28px;
+    height: 28px;
+    background: rgba(120,120,128,0.15);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+  }
+
+  .input-value {
+    font-size: 15px;
+    color: #8E8E93;
+    flex: 1;
+    text-align: left;
+  }
+  .input-value.filled { color: #000; }
+  .input-value input, .input-value select, .input-value textarea {
+    width: 100%;
+    border: none;
+    background: transparent;
+    text-align: left;
+    font-size: 15px;
+    color: #000;
+    outline: none;
+    font-family: inherit;
+    direction: rtl;
+  }
+  .input-value input::placeholder { color: #8E8E93; }
+  .input-value select { appearance: none; cursor: pointer; padding-left: 20px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath d='M2 4l3 3 3-3' stroke='%238E8E93' fill='none' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat left center; }
+
+  .field-row-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-size: 15px;
+    color: #000;
+    outline: none;
+    text-align: left;
+    font-family: inherit;
+  }
+
+  .form-section-title {
+    font-size: 13px;
+    color: #8E8E93;
+    padding: 14px 22px 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .balance-card {
+    background: linear-gradient(135deg, #FF3B30, #FF9500);
+    color: white;
+    padding: 18px;
+    border-radius: 16px;
+    margin: 12px 16px;
+    text-align: center;
+  }
+  .balance-card.good { background: linear-gradient(135deg, #007AFF, #5856D6); }
+  .balance-card.paid { background: linear-gradient(135deg, #34C759, #30B0C7); }
+  .balance-card.medium { background: linear-gradient(135deg, #FF9500, #FFCC00); }
+  .balance-label { font-size: 12px; opacity: 0.9; }
+  .balance-value { font-size: 32px; font-weight: 700; margin-top: 4px; letter-spacing: -0.5px; }
+
+  .mini-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    margin: 0 16px 12px;
+  }
+  .mini-stat {
+    background: white;
+    padding: 10px 8px;
+    border-radius: 12px;
+    text-align: center;
+  }
+  .mini-stat-label { font-size: 10px; color: #8E8E93; margin-bottom: 2px; }
+  .mini-stat-value { font-size: 15px; font-weight: 600; }
+
+  .quick-actions {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin: 0 16px 12px;
+  }
+  .action-btn {
+    background: white;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 6px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    color: #007AFF;
+    font-family: inherit;
+  }
+  .action-btn svg { width: 18px; height: 18px; }
+  .action-btn span { font-size: 11px; font-weight: 500; }
+
+  .transaction-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    cursor: pointer;
+  }
+  .transaction-row + .transaction-row {
+    border-top: 0.5px solid rgba(60,60,67,0.12);
+  }
+  .trans-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 16px;
+  }
+  .trans-icon.debt { background: rgba(255,59,48,0.15); color: #FF3B30; }
+  .trans-icon.pay { background: rgba(52,199,89,0.15); color: #34C759; }
+
+  .empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: #8E8E93;
+  }
+  .empty-state-icon { font-size: 50px; opacity: 0.5; margin-bottom: 12px; }
+  .empty-state-title { font-size: 17px; font-weight: 500; margin-bottom: 4px; }
+  .empty-state-sub { font-size: 13px; }
+
+  .chart-card {
+    background: white;
+    border-radius: 14px;
+    margin: 0 16px 12px;
+    padding: 16px;
+  }
+  .chart-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+
+  .progress-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .progress-name {
+    font-size: 12px;
+    width: 100px;
+    flex-shrink: 0;
+    text-align: right;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .progress-bar {
+    flex: 1;
+    height: 6px;
+    background: rgba(0,0,0,0.06);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    border-radius: 3px;
+  }
+  .progress-amount {
+    font-size: 12px;
+    font-weight: 600;
+    width: 70px;
+    text-align: left;
+  }
+
+  .donut-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .donut-svg { width: 130px; height: 130px; flex-shrink: 0; }
+  .legend { flex: 1; }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    margin-bottom: 6px;
+  }
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  .delete-btn {
+    color: #FF3B30 !important;
+    font-weight: 500;
+  }
+
+  .install-banner {
+    background: linear-gradient(135deg, #34C759, #00C7BE);
+    color: white;
+    padding: 12px 16px;
+    margin: 8px 16px;
+    border-radius: 12px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+  }
+  .install-banner.hidden { display: none; }
+  .install-banner-text { flex: 1; }
+  .install-banner-close {
+    background: rgba(255,255,255,0.25);
+    border: none;
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
+  }
+
+  /* Welcome screen for first time */
+  .welcome-overlay {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, #007AFF, #5856D6);
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 40px 30px;
+    color: white;
+    text-align: center;
+  }
+  .welcome-overlay.active { display: flex; }
+  .welcome-icon { font-size: 80px; margin-bottom: 20px; }
+  .welcome-title { font-size: 28px; font-weight: 700; margin-bottom: 10px; }
+  .welcome-sub { font-size: 16px; opacity: 0.9; margin-bottom: 30px; line-height: 1.6; }
+  .welcome-btn {
+    background: white;
+    color: #007AFF;
+    border: none;
+    padding: 14px 40px;
+    border-radius: 30px;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .welcome-steps {
+    background: rgba(255,255,255,0.15);
+    border-radius: 14px;
+    padding: 16px;
+    margin: 20px 0;
+    font-size: 14px;
+    text-align: right;
+    width: 100%;
+    max-width: 320px;
+  }
+  .welcome-steps div { margin-bottom: 8px; }
+
+  /* أنماط التقارير */
+  .report-summary {
+    background: linear-gradient(135deg, #007AFF, #5856D6);
+    color: white;
+    border-radius: 16px;
+    padding: 18px;
+    margin-bottom: 12px;
+  }
+  .report-summary-title {
+    font-size: 13px;
+    opacity: 0.85;
+    margin-bottom: 4px;
+  }
+  .report-summary-period {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .report-summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .report-summary-stat {
+    background: rgba(255,255,255,0.15);
+    border-radius: 10px;
+    padding: 10px;
+  }
+  .report-summary-stat-label {
+    font-size: 11px;
+    opacity: 0.9;
+  }
+  .report-summary-stat-value {
+    font-size: 17px;
+    font-weight: 600;
+    margin-top: 3px;
+  }
+
+  .report-section {
+    background: white;
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 12px;
+  }
+  .report-section-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .report-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 0.5px solid rgba(60,60,67,0.1);
+    font-size: 13px;
+  }
+  .report-row:last-child { border-bottom: none; }
+  .report-row-label { color: #3C3C43; }
+  .report-row-value { font-weight: 600; }
+
+  .report-empty {
+    text-align: center;
+    padding: 30px;
+    color: #8E8E93;
+    font-size: 14px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .report-section { background: #1C1C1E !important; }
+    .report-row-label { color: #fff !important; }
+    .report-row { border-color: rgba(255,255,255,0.1) !important; }
+  }
+
+  /* البحث المتقدم */
+  .advanced-search-toggle {
+    background: white;
+    border: 0.5px solid rgba(60,60,67,0.18);
+    margin: 0 16px 8px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .advanced-search-toggle.active {
+    background: rgba(0,122,255,0.1);
+    color: #007AFF;
+    border-color: #007AFF;
+  }
+  .advanced-search-toggle .badge {
+    background: #FF3B30;
+    color: white;
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 10px;
+    font-weight: 600;
+    margin-right: 4px;
+  }
+
+  .advanced-search-panel {
+    background: white;
+    margin: 0 16px 8px;
+    border-radius: 14px;
+    padding: 14px;
+    display: none;
+    overflow: hidden;
+    animation: slideDown 0.25s ease;
+  }
+  .advanced-search-panel.active { display: block; }
+
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .filter-section {
+    margin-bottom: 14px;
+  }
+  .filter-section:last-child { margin-bottom: 0; }
+
+  .filter-title {
+    font-size: 11px;
+    font-weight: 600;
+    color: #8E8E93;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .filter-chips-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .adv-chip {
+    padding: 5px 11px;
+    border-radius: 14px;
+    font-size: 12px;
+    cursor: pointer;
+    border: 0.5px solid rgba(60,60,67,0.18);
+    background: white;
+    color: #000;
+    font-family: inherit;
+    transition: all 0.15s;
+  }
+  .adv-chip.active {
+    background: #007AFF;
+    color: white;
+    border-color: #007AFF;
+  }
+
+  .filter-range-row {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+  }
+  .filter-range-row input {
+    flex: 1;
+    padding: 7px 10px;
+    border: 0.5px solid rgba(60,60,67,0.18);
+    border-radius: 8px;
+    font-size: 13px;
+    font-family: inherit;
+    text-align: center;
+    background: #F2F2F7;
+    outline: none;
+  }
+  .filter-range-row input:focus {
+    border-color: #007AFF;
+    background: white;
+  }
+  .filter-range-row .arrow {
+    color: #8E8E93;
+    font-size: 14px;
+  }
+
+  .preset-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+  .preset-btn {
+    padding: 8px;
+    background: rgba(0,122,255,0.08);
+    border: none;
+    border-radius: 8px;
+    font-size: 12px;
+    color: #007AFF;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  .active-filters-bar {
+    background: rgba(0,122,255,0.12);
+    color: #007AFF;
+    padding: 8px 14px;
+    margin: 0 16px 8px;
+    border-radius: 10px;
+    font-size: 12px;
+    display: none;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+  }
+  .active-filters-bar.active { display: flex; }
+  .active-filters-bar .text { flex: 1; }
+  .active-filters-bar .clear-btn {
+    background: rgba(0,122,255,0.2);
+    color: #007AFF;
+    border: none;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 12px;
+  }
+
+  .filter-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 0.5px solid rgba(60,60,67,0.12);
+  }
+  .filter-action-btn {
+    flex: 1;
+    padding: 9px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .filter-action-btn.reset {
+    background: #F2F2F7;
+    color: #000;
+  }
+  .filter-action-btn.apply {
+    background: #007AFF;
+    color: white;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .advanced-search-toggle { background: #1C1C1E; color: #fff; border-color: rgba(255,255,255,0.1); }
+    .advanced-search-panel { background: #1C1C1E; }
+    .adv-chip { background: #2C2C2E; color: #fff; border-color: rgba(255,255,255,0.1); }
+    .filter-range-row input { background: #2C2C2E; color: #fff; border-color: rgba(255,255,255,0.1); }
+    .filter-action-btn.reset { background: #2C2C2E; color: #fff; }
+  }
+</style>
+</head>
+<body>
+
+<!-- شاشة الترحيب والتثبيت -->
+<div class="welcome-overlay" id="welcomeOverlay">
+  <div style="margin-bottom: 20px;">
+    <svg width="100" height="100" viewBox="0 0 180 180" style="filter: drop-shadow(0 6px 16px rgba(0,0,0,0.3));">
+      <rect width="180" height="180" rx="40" fill="white"/>
+      <g fill="white" stroke="white">
+        <rect x="40" y="35" width="100" height="115" rx="12" fill="none" stroke="#007AFF" stroke-width="5"/>
+        <rect x="52" y="48" width="76" height="22" rx="4" fill="#1F4E78"/>
+        <text x="124" y="65" text-anchor="end" font-size="16" font-weight="700" fill="white" font-family="Arial">1234.56</text>
+        <g font-size="20" font-weight="700" font-family="Arial" text-anchor="middle">
+          <text x="65" y="95" fill="#1F4E78">7</text>
+          <text x="90" y="95" fill="#1F4E78">8</text>
+          <text x="115" y="95" fill="#1F4E78">9</text>
+          <text x="65" y="118" fill="#1F4E78">4</text>
+          <text x="90" y="118" fill="#1F4E78">5</text>
+          <text x="115" y="118" fill="#1F4E78">6</text>
+          <text x="65" y="141" fill="#FF9500">+</text>
+          <text x="90" y="141" fill="#34C759">−</text>
+          <text x="115" y="141" fill="#FF3B30">=</text>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <div class="welcome-title">صيدلية الفتح</div>
+  <div class="welcome-sub">نظام إدارة ديون الشركات والتجار</div>
+
+  <div class="welcome-steps">
+    <div style="font-weight: 600; margin-bottom: 12px;">📱 لتثبيت التطبيق على iPhone:</div>
+    <div>1️⃣ افتح هذه الصفحة في <b>Safari</b></div>
+    <div>2️⃣ اضغط زر المشاركة <span style="display:inline-block;background:rgba(255,255,255,0.3);padding:2px 8px;border-radius:6px">⬆️</span></div>
+    <div>3️⃣ اختر <b>"Add to Home Screen"</b></div>
+    <div>4️⃣ اضغط <b>Add</b></div>
+    <div style="margin-top: 12px; opacity: 0.85;">✨ سيظهر التطبيق كأيقونة على شاشة iPhone</div>
+  </div>
+
+  <button class="welcome-btn" onclick="hideWelcome()">ابدأ الاستخدام</button>
+</div>
+
+<div class="app-container">
+
+<!-- شاشة الرئيسية -->
+<div class="screen active" id="screen-dashboard">
+  <div class="nav-bar">
+    <button class="nav-btn" onclick="exportData()" title="نسخ احتياطي">⬇️</button>
+    <div class="nav-title">الرئيسية</div>
+    <button class="nav-btn" onclick="openAddTransaction()">＋</button>
+  </div>
+
+  <div id="installBanner" class="install-banner hidden">
+    <div style="font-size: 24px;">📱</div>
+    <div class="install-banner-text">
+      <div style="font-weight: 600;">ثبّت التطبيق على iPhone</div>
+      <div style="font-size: 11px; opacity: 0.9;">Safari → مشاركة → Add to Home Screen</div>
+    </div>
+    <button class="install-banner-close" onclick="dismissInstall()">✕</button>
+  </div>
+
+  <div class="hero-card">
+    <div class="hero-label">إجمالي الديون الحالية</div>
+    <div class="hero-value" id="totalBalance">0.00 د.ل</div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-label">ديون جديدة</div>
+        <div class="hero-stat-val" id="totalNewDebts">0</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-label">مسدد</div>
+        <div class="hero-stat-val" id="totalPaid">0</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-label">تجار</div>
+        <div class="hero-stat-val" id="suppliersCount">0</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-label">↗ ديون هذا الشهر</div>
+      <div class="stat-value" style="color:#FF3B30" id="monthlyDebts">0</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">↘ مدفوعات</div>
+      <div class="stat-value" style="color:#34C759" id="monthlyPayments">0</div>
+    </div>
+  </div>
+
+  <div class="section-header">
+    <span>أعلى التجار رصيداً</span>
+    <a onclick="switchTab('suppliers')">الكل ›</a>
+  </div>
+  <div class="card" id="topSuppliers"></div>
+
+  <div class="section-header">
+    <span>آخر المعاملات</span>
+  </div>
+  <div class="card" id="recentTransactions"></div>
+</div>
+
+<!-- شاشة التجار -->
+<div class="screen" id="screen-suppliers">
+  <div class="nav-bar">
+    <button class="nav-btn" onclick="openAddSupplier()">＋</button>
+    <div class="nav-title">التجار</div>
+    <div style="width: 36px;"></div>
+  </div>
+
+  <div class="search-box">
+    <span>🔍</span>
+    <input type="text" id="supplierSearch" placeholder="ابحث في الاسم، الفاتورة، الملاحظات..." oninput="renderSuppliers()">
+  </div>
+
+  <!-- زر تفعيل البحث المتقدم -->
+  <div class="advanced-search-toggle" id="advSearchToggle" onclick="toggleAdvancedSearch('supplier')">
+    <div style="display:flex; align-items:center; gap:8px;">
+      <span style="font-size:16px;">⚙️</span>
+      <span>البحث المتقدم</span>
+      <span class="badge" id="supplierActiveBadge" style="display:none;">0</span>
+    </div>
+    <span id="advSearchChevron" style="color:#8E8E93; font-size:14px;">▼</span>
+  </div>
+
+  <!-- لوحة البحث المتقدم -->
+  <div class="advanced-search-panel" id="advSearchPanel">
+    <!-- حالة الرصيد -->
+    <div class="filter-section">
+      <div class="filter-title">📊 حالة الرصيد</div>
+      <div class="filter-chips-wrap">
+        <button class="adv-chip active" data-supplier-filter="status" data-value="all" onclick="setAdvFilter(this, 'status')">الكل</button>
+        <button class="adv-chip" data-supplier-filter="status" data-value="high" onclick="setAdvFilter(this, 'status')">🔴 مرتفع</button>
+        <button class="adv-chip" data-supplier-filter="status" data-value="medium" onclick="setAdvFilter(this, 'status')">🟡 متوسط</button>
+        <button class="adv-chip" data-supplier-filter="status" data-value="good" onclick="setAdvFilter(this, 'status')">🔵 جيد</button>
+        <button class="adv-chip" data-supplier-filter="status" data-value="paid" onclick="setAdvFilter(this, 'status')">🟢 مسدد</button>
+      </div>
+    </div>
+
+    <!-- نطاق الرصيد -->
+    <div class="filter-section">
+      <div class="filter-title">💰 نطاق الرصيد (د.ل)</div>
+      <div class="filter-range-row">
+        <input type="number" id="supplierMinBalance" placeholder="من" oninput="renderSuppliers()">
+        <span class="arrow">⟶</span>
+        <input type="number" id="supplierMaxBalance" placeholder="إلى" oninput="renderSuppliers()">
+      </div>
+    </div>
+
+    <!-- نشاط آخر معاملة -->
+    <div class="filter-section">
+      <div class="filter-title">⏱ آخر معاملة</div>
+      <div class="filter-chips-wrap">
+        <button class="adv-chip active" data-supplier-filter="activity" data-value="all" onclick="setAdvFilter(this, 'activity')">الكل</button>
+        <button class="adv-chip" data-supplier-filter="activity" data-value="week" onclick="setAdvFilter(this, 'activity')">آخر أسبوع</button>
+        <button class="adv-chip" data-supplier-filter="activity" data-value="month" onclick="setAdvFilter(this, 'activity')">آخر شهر</button>
+        <button class="adv-chip" data-supplier-filter="activity" data-value="quarter" onclick="setAdvFilter(this, 'activity')">آخر 3 أشهر</button>
+        <button class="adv-chip" data-supplier-filter="activity" data-value="inactive" onclick="setAdvFilter(this, 'activity')">⚠ غير نشط</button>
+      </div>
+    </div>
+
+    <!-- ترتيب -->
+    <div class="filter-section">
+      <div class="filter-title">↕ ترتيب حسب</div>
+      <div class="filter-chips-wrap">
+        <button class="adv-chip active" data-supplier-filter="sort" data-value="balance" onclick="setAdvFilter(this, 'sort')">الرصيد ⬇</button>
+        <button class="adv-chip" data-supplier-filter="sort" data-value="name" onclick="setAdvFilter(this, 'sort')">الاسم</button>
+        <button class="adv-chip" data-supplier-filter="sort" data-value="recent" onclick="setAdvFilter(this, 'sort')">الأحدث</button>
+        <button class="adv-chip" data-supplier-filter="sort" data-value="transactions" onclick="setAdvFilter(this, 'sort')">الأكثر معاملات</button>
+      </div>
+    </div>
+
+    <div class="filter-actions">
+      <button class="filter-action-btn reset" onclick="resetSupplierFilters()">🔄 مسح الكل</button>
+      <button class="filter-action-btn apply" onclick="exportFilteredSuppliers()">📄 تصدير النتائج</button>
+    </div>
+  </div>
+
+  <!-- شريط الفلاتر النشطة -->
+  <div class="active-filters-bar" id="supplierActiveBar" onclick="resetSupplierFilters()">
+    <span style="font-size:14px;">🎯</span>
+    <span class="text" id="supplierActiveText"></span>
+    <button class="clear-btn">✕</button>
+  </div>
+
+  <!-- الفلاتر القديمة (chip بسيطة) -->
+  <div class="filter-chips" id="filterChips">
+    <button class="chip active" onclick="setFilter('all', this)">الكل · <span id="count-all">0</span></button>
+    <button class="chip" onclick="setFilter('high', this)">🔴 مرتفع · <span id="count-high">0</span></button>
+    <button class="chip" onclick="setFilter('medium', this)">🟡 متوسط · <span id="count-medium">0</span></button>
+    <button class="chip" onclick="setFilter('good', this)">🔵 جيد · <span id="count-good">0</span></button>
+    <button class="chip" onclick="setFilter('paid', this)">🟢 مسدد · <span id="count-paid">0</span></button>
+  </div>
+
+  <div class="card" id="suppliersList"></div>
+</div>
+
+<!-- شاشة المعاملات -->
+<div class="screen" id="screen-transactions">
+  <div class="nav-bar">
+    <button class="nav-btn" onclick="openAddTransaction()">＋</button>
+    <div class="nav-title">المعاملات</div>
+    <div style="width: 36px;"></div>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-label">↗ إجمالي الديون</div>
+      <div class="stat-value" style="color:#FF3B30" id="allDebts">0</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">↘ إجمالي المسدد</div>
+      <div class="stat-value" style="color:#34C759" id="allPayments">0</div>
+    </div>
+  </div>
+
+  <div class="search-box">
+    <span>🔍</span>
+    <input type="text" id="transSearch" placeholder="ابحث في الفاتورة، التاجر، الملاحظات..." oninput="renderTransactions()">
+  </div>
+
+  <!-- زر البحث المتقدم للمعاملات -->
+  <div class="advanced-search-toggle" id="advTransToggle" onclick="toggleAdvancedSearch('trans')">
+    <div style="display:flex; align-items:center; gap:8px;">
+      <span style="font-size:16px;">⚙️</span>
+      <span>البحث المتقدم</span>
+      <span class="badge" id="transActiveBadge" style="display:none;">0</span>
+    </div>
+    <span id="advTransChevron" style="color:#8E8E93; font-size:14px;">▼</span>
+  </div>
+
+  <!-- لوحة البحث المتقدم للمعاملات -->
+  <div class="advanced-search-panel" id="advTransPanel">
+    <!-- نوع المعاملة -->
+    <div class="filter-section">
+      <div class="filter-title">↗↘ نوع المعاملة</div>
+      <div class="filter-chips-wrap">
+        <button class="adv-chip active" data-trans-filter="type" data-value="all" onclick="setTransAdvFilter(this, 'type')">الكل</button>
+        <button class="adv-chip" data-trans-filter="type" data-value="debt" onclick="setTransAdvFilter(this, 'type')">↗ ديون</button>
+        <button class="adv-chip" data-trans-filter="type" data-value="pay" onclick="setTransAdvFilter(this, 'type')">↘ مدفوعات</button>
+      </div>
+    </div>
+
+    <!-- طريقة الدفع -->
+    <div class="filter-section">
+      <div class="filter-title">💳 طريقة الدفع</div>
+      <div class="filter-chips-wrap">
+        <button class="adv-chip active" data-trans-filter="method" data-value="all" onclick="setTransAdvFilter(this, 'method')">الكل</button>
+        <button class="adv-chip" data-trans-filter="method" data-value="cash" onclick="setTransAdvFilter(this, 'method')">💵 نقدي</button>
+        <button class="adv-chip" data-trans-filter="method" data-value="bank" onclick="setTransAdvFilter(this, 'method')">🏦 بنكي</button>
+        <button class="adv-chip" data-trans-filter="method" data-value="cheque" onclick="setTransAdvFilter(this, 'method')">📄 شيك</button>
+        <button class="adv-chip" data-trans-filter="method" data-value="deferred" onclick="setTransAdvFilter(this, 'method')">⏰ آجل</button>
+        <button class="adv-chip" data-trans-filter="method" data-value="card" onclick="setTransAdvFilter(this, 'method')">💳 بطاقة</button>
+      </div>
+    </div>
+
+    <!-- نطاق المبلغ -->
+    <div class="filter-section">
+      <div class="filter-title">💰 نطاق المبلغ (د.ل)</div>
+      <div class="filter-range-row">
+        <input type="number" id="transMinAmount" placeholder="من" oninput="renderTransactions()" step="0.01">
+        <span class="arrow">⟶</span>
+        <input type="number" id="transMaxAmount" placeholder="إلى" oninput="renderTransactions()" step="0.01">
+      </div>
+    </div>
+
+    <!-- الفترة الزمنية - فلاتر سريعة -->
+    <div class="filter-section">
+      <div class="filter-title">📅 فترة سريعة</div>
+      <div class="preset-grid">
+        <button class="preset-btn" onclick="setDatePreset('today')">📅 اليوم</button>
+        <button class="preset-btn" onclick="setDatePreset('week')">🗓 آخر 7 أيام</button>
+        <button class="preset-btn" onclick="setDatePreset('month')">📆 هذا الشهر</button>
+        <button class="preset-btn" onclick="setDatePreset('lastMonth')">📅 الشهر الماضي</button>
+        <button class="preset-btn" onclick="setDatePreset('quarter')">📊 آخر 3 أشهر</button>
+        <button class="preset-btn" onclick="setDatePreset('year')">📆 هذه السنة</button>
+      </div>
+    </div>
+
+    <!-- فترة مخصصة -->
+    <div class="filter-section">
+      <div class="filter-title">📅 فترة مخصصة</div>
+      <div class="filter-range-row">
+        <input type="date" id="transDateFrom" oninput="renderTransactions()">
+        <span class="arrow">⟶</span>
+        <input type="date" id="transDateTo" oninput="renderTransactions()">
+      </div>
+    </div>
+
+    <!-- التاجر المحدد -->
+    <div class="filter-section">
+      <div class="filter-title">🏢 تاجر محدد</div>
+      <div class="filter-range-row">
+        <select id="transSupplierFilter" onchange="renderTransactions()" style="flex:1; padding:7px 10px; border:0.5px solid rgba(60,60,67,0.18); border-radius:8px; font-size:13px; font-family:inherit; background:#F2F2F7; color:#000;">
+          <option value="">كل التجار</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="filter-actions">
+      <button class="filter-action-btn reset" onclick="resetTransFilters()">🔄 مسح الكل</button>
+      <button class="filter-action-btn apply" onclick="exportFilteredTransactions()">📄 تصدير النتائج</button>
+    </div>
+  </div>
+
+  <!-- شريط الفلاتر النشطة للمعاملات -->
+  <div class="active-filters-bar" id="transActiveBar" onclick="resetTransFilters()">
+    <span style="font-size:14px;">🎯</span>
+    <span class="text" id="transActiveText"></span>
+    <button class="clear-btn">✕</button>
+  </div>
+
+  <div class="filter-chips">
+    <button class="chip active" onclick="setTransFilter('all', this)">الكل</button>
+    <button class="chip" onclick="setTransFilter('debt', this)">ديون</button>
+    <button class="chip" onclick="setTransFilter('pay', this)">مدفوعات</button>
+  </div>
+
+  <div id="transactionsList"></div>
+</div>
+
+<!-- شاشة التحليل -->
+<div class="screen" id="screen-analytics">
+  <div class="nav-bar">
+    <button class="nav-btn" onclick="exportData()">⬇️</button>
+    <div class="nav-title">التحليل</div>
+    <div style="width: 36px;"></div>
+  </div>
+
+  <div class="chart-card">
+    <div class="chart-title">توزيع التجار حسب الحالة</div>
+    <div class="donut-container">
+      <svg class="donut-svg" viewBox="0 0 36 36" id="donutChart"></svg>
+      <div class="legend" id="donutLegend"></div>
+    </div>
+  </div>
+
+  <div class="chart-card">
+    <div class="chart-title">أعلى 5 تجار رصيداً</div>
+    <div id="topBarChart"></div>
+  </div>
+
+  <div class="chart-card">
+    <div class="chart-title">الحركة الشهرية (آخر 6 أشهر)</div>
+    <svg id="lineChart" viewBox="0 0 320 160" style="width:100%; height:160px;"></svg>
+    <div style="display:flex; gap:14px; font-size:11px; margin-top:8px; justify-content:center;">
+      <div style="display:flex; align-items:center; gap:4px;">
+        <div style="width:12px; height:3px; background:#FF3B30; border-radius:2px;"></div> ديون
+      </div>
+      <div style="display:flex; align-items:center; gap:4px;">
+        <div style="width:12px; height:3px; background:#34C759; border-radius:2px;"></div> مدفوعات
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- شاشة التقارير -->
+<div class="screen" id="screen-reports">
+  <div class="nav-bar">
+    <div style="width: 36px;"></div>
+    <div class="nav-title">التقارير</div>
+    <div style="width: 36px;"></div>
+  </div>
+
+  <div class="section-header"><span>التقارير الشهرية</span></div>
+  <div class="card">
+    <div class="list-row" onclick="openMonthlyReport()">
+      <div style="width:42px; height:42px; border-radius:10px; background:rgba(0,122,255,0.15); display:flex; align-items:center; justify-content:center; font-size:20px;">📅</div>
+      <div class="row-content">
+        <div class="row-title">تقرير شهري مفصل</div>
+        <div class="row-sub">اختر أي شهر وشاهد التحليل الكامل</div>
+      </div>
+      <div style="color:#C7C7CC;">›</div>
+    </div>
+    <div class="list-row" onclick="openYearlyReport()">
+      <div style="width:42px; height:42px; border-radius:10px; background:rgba(88,86,214,0.15); display:flex; align-items:center; justify-content:center; font-size:20px;">📈</div>
+      <div class="row-content">
+        <div class="row-title">تقرير سنوي شامل</div>
+        <div class="row-sub">ملخص جميع الأشهر في السنة</div>
+      </div>
+      <div style="color:#C7C7CC;">›</div>
+    </div>
+  </div>
+
+  <div class="section-header"><span>كشوف حسابات PDF</span></div>
+  <div class="card">
+    <div class="list-row" onclick="openPDFGenerator()">
+      <div style="width:42px; height:42px; border-radius:10px; background:rgba(255,59,48,0.15); display:flex; align-items:center; justify-content:center; font-size:20px;">📄</div>
+      <div class="row-content">
+        <div class="row-title">كشف حساب تاجر (PDF)</div>
+        <div class="row-sub">اختر التاجر واطبع كشف حسابه</div>
+      </div>
+      <div style="color:#C7C7CC;">›</div>
+    </div>
+    <div class="list-row" onclick="generateAllSuppliersPDF()">
+      <div style="width:42px; height:42px; border-radius:10px; background:rgba(52,199,89,0.15); display:flex; align-items:center; justify-content:center; font-size:20px;">📑</div>
+      <div class="row-content">
+        <div class="row-title">تقرير شامل لكل التجار (PDF)</div>
+        <div class="row-sub">كشف عام لجميع الديون والأرصدة</div>
+      </div>
+      <div style="color:#C7C7CC;">›</div>
+    </div>
+  </div>
+
+  <div class="section-header"><span>التحليل</span></div>
+  <div class="card">
+    <div class="list-row" onclick="switchTab('analytics')">
+      <div style="width:42px; height:42px; border-radius:10px; background:rgba(255,149,0,0.15); display:flex; align-items:center; justify-content:center; font-size:20px;">📊</div>
+      <div class="row-content">
+        <div class="row-title">الرسوم البيانية والإحصائيات</div>
+        <div class="row-sub">رسوم توضيحية لكل البيانات</div>
+      </div>
+      <div style="color:#C7C7CC;">›</div>
+    </div>
+  </div>
+</div>
+
+<!-- شاشة الإعدادات -->
+<div class="screen" id="screen-settings">
+  <div class="nav-bar">
+    <div style="width: 36px;"></div>
+    <div class="nav-title">الإعدادات</div>
+    <div style="width: 36px;"></div>
+  </div>
+
+  <div class="card" style="margin-top: 12px;">
+    <div class="list-row" style="padding: 16px;">
+      <div style="width:48px; height:48px; flex-shrink:0;">
+        <svg viewBox="0 0 180 180" width="48" height="48">
+          <rect width="180" height="180" rx="40" fill="#007AFF"/>
+          <g>
+            <rect x="40" y="35" width="100" height="115" rx="12" fill="none" stroke="white" stroke-width="5"/>
+            <rect x="52" y="48" width="76" height="22" rx="4" fill="white"/>
+            <text x="124" y="65" text-anchor="end" font-size="16" font-weight="700" fill="#1F4E78" font-family="Arial">1234</text>
+            <g font-size="20" font-weight="700" font-family="Arial" text-anchor="middle" fill="white">
+              <text x="65" y="95">7</text><text x="90" y="95">8</text><text x="115" y="95">9</text>
+              <text x="65" y="118">4</text><text x="90" y="118">5</text><text x="115" y="118">6</text>
+              <text x="65" y="141" fill="#FFD60A">+</text>
+              <text x="90" y="141" fill="#34C759">−</text>
+              <text x="115" y="141" fill="#FF3B30">=</text>
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div class="row-content">
+        <div class="row-title">صيدلية الفتح</div>
+        <div class="row-sub">نظام إدارة الديون - الإصدار 2.0</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header"><span>الاستيراد والتصدير</span></div>
+  <div class="card">
+    <div class="list-row" onclick="exportData()">
+      <div style="font-size:20px;">⬇️</div>
+      <div class="row-content"><div class="row-title">تصدير نسخة احتياطية</div></div>
+    </div>
+    <div class="list-row" onclick="document.getElementById('importFile').click()">
+      <div style="font-size:20px;">⬆️</div>
+      <div class="row-content"><div class="row-title">استيراد من نسخة احتياطية</div></div>
+    </div>
+    <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
+  </div>
+
+  <div class="section-header"><span>إدارة البيانات</span></div>
+  <div class="card">
+    <div class="list-row" onclick="loadSampleData()">
+      <div style="font-size:20px;">📋</div>
+      <div class="row-content">
+        <div class="row-title">تحميل بيانات تجريبية</div>
+        <div class="row-sub">10 شركات + معاملات للتجربة</div>
+      </div>
+    </div>
+    <div class="list-row delete-btn" onclick="clearAllData()">
+      <div style="font-size:20px;">🗑️</div>
+      <div class="row-content"><div class="row-title">حذف كل البيانات</div></div>
+    </div>
+  </div>
+
+  <div class="section-header"><span>تثبيت التطبيق</span></div>
+  <div class="card">
+    <div class="list-row" onclick="showInstallGuide()">
+      <div style="font-size:20px;">📱</div>
+      <div class="row-content">
+        <div class="row-title">دليل تثبيت التطبيق</div>
+        <div class="row-sub">إضافة التطبيق إلى الشاشة الرئيسية</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header"><span>اختبار دقة الحسابات</span></div>
+  <div class="card">
+    <div class="list-row" onclick="testCalculations()">
+      <div style="font-size:20px;">🧮</div>
+      <div class="row-content">
+        <div class="row-title">اختبار النظام المحاسبي</div>
+        <div class="row-sub">تأكد من دقة حساب الكسور والمبالغ</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<!-- Tab Bar -->
+<div class="tab-bar">
+  <div class="tab-item active" onclick="switchTab('dashboard')" data-tab="dashboard">
+    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+    <span>الرئيسية</span>
+  </div>
+  <div class="tab-item" onclick="switchTab('suppliers')" data-tab="suppliers">
+    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 7V3H2v18h20V7H12zm-8 4h2v2H4v-2zm0 4h2v2H4v-2zm6-4h2v2h-2v-2zm0 4h2v2h-2v-2zm-6-8h2v2H4V7zm6 0h2v2h-2V7zm8 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/></svg>
+    <span>التجار</span>
+  </div>
+  <div class="tab-item" onclick="switchTab('transactions')" data-tab="transactions">
+    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/></svg>
+    <span>المعاملات</span>
+  </div>
+  <div class="tab-item" onclick="switchTab('reports')" data-tab="reports">
+    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+    <span>التقارير</span>
+  </div>
+  <div class="tab-item" onclick="switchTab('settings')" data-tab="settings">
+    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94 0 .31.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+    <span>إعدادات</span>
+  </div>
+</div>
+
+<!-- Modal: إضافة/تعديل تاجر -->
+<div class="modal-overlay" id="modalSupplier">
+  <div class="modal">
+    <div class="modal-header">
+      <button class="modal-btn" onclick="closeModal('modalSupplier')">إلغاء</button>
+      <div class="modal-title" id="supplierModalTitle">تاجر جديد</div>
+      <button class="modal-btn bold" onclick="saveSupplier()">حفظ</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-section-title">بيانات الشركة</div>
+      <div class="input-card">
+        <div class="input-row">
+          <div class="input-label"><div class="icon-box">🏢</div>اسم الشركة *</div>
+          <input class="field-row-input" type="text" id="supplierName" placeholder="مثال: شركة الحكمة">
+        </div>
+        <div class="input-row">
+          <div class="input-label"><div class="icon-box">👤</div>اسم المسؤول</div>
+          <input class="field-row-input" type="text" id="supplierContact" placeholder="اختياري">
+        </div>
+      </div>
+
+      <div class="form-section-title">التواصل</div>
+      <div class="input-card">
+        <div class="input-row">
+          <div class="input-label"><div class="icon-box">📱</div>رقم الهاتف</div>
+          <input class="field-row-input" type="tel" id="supplierPhone" placeholder="0912345678">
+        </div>
+        <div class="input-row">
+          <div class="input-label"><div class="icon-box">📍</div>العنوان</div>
+          <input class="field-row-input" type="text" id="supplierAddress" placeholder="اختياري">
+        </div>
+      </div>
+
+      <div class="form-section-title">المعلومات المالية</div>
+      <div class="input-card">
+        <div class="input-row">
+          <div class="input-label"><div class="icon-box">💰</div>الرصيد الافتتاحي</div>
+          <input class="field-row-input" type="number" id="supplierOpeningBalance" placeholder="0" step="0.01">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: إضافة معاملة -->
+<div class="modal-overlay" id="modalTransaction">
+  <div class="modal">
+    <div class="modal-header">
+      <button class="modal-btn" onclick="closeModal('modalTransaction')">إلغاء</button>
+      <div class="modal-title">معاملة جديدة</div>
+      <button class="modal-btn bold" id="saveTransBtn" onclick="saveTransaction()">حفظ</button>
+    </div>
+    <div class="modal-body">
+      <div class="type-toggle">
+        <button class="type-btn active debt" onclick="setTransType('debt', this)">↗ دين جديد</button>
+        <button class="type-btn pay" onclick="setTransType('pay', this)">↘ دفعة سداد</button>
+      </div>
+
+      <div class="amount-display">
+        <div class="amount-label">المبلغ بالدينار الليبي</div>
+        <input class="amount-input" type="number" id="transAmount" placeholder="0.00" step="0.01" inputmode="decimal">
+      </div>
+
+      <div class="input-card">
+        <div class="input-row">
+          <div class="input-label"><div class="icon-box">🏢</div>الشركة *</div>
+          <div class="input-value">
+            <select id="transSupplier"><option value="">اختر تاجراً</option></select>
+          </div>
+        </div>
+        <div class="input-row">
+          <div class="input-label"><div class="icon-box">📅</div>التاريخ</div>
+          <div class="input-value">
+            <input type="date" id="transDate">
+          </div>
+        </div>
+        <div class="input-row">
+          <div class="input-label"><div class="icon-box">📄</div>رقم الفاتورة</div>
+          <input class="field-row-input" type="text" id="transInvoice" placeholder="اختياري">
+        </div>
+        <div class="input-row">
+          <div class="input-label"><div class="icon-box">💳</div>طريقة الدفع</div>
+          <div class="input-value">
+            <select id="transPayment">
+              <option value="cash">نقدي</option>
+              <option value="bank">تحويل بنكي</option>
+              <option value="cheque">شيك</option>
+              <option value="deferred" selected>آجل</option>
+              <option value="card">بطاقة مصرفية</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="input-card">
+        <div style="padding: 12px 14px;">
+          <div style="font-size: 13px; color: #8E8E93; margin-bottom: 6px;">ملاحظات</div>
+          <textarea id="transNotes" rows="3" style="width:100%; border:none; background:transparent; font-size:14px; outline:none; resize:none; font-family:inherit; color:inherit;" placeholder="اختياري..."></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: تفاصيل التاجر -->
+<div class="modal-overlay" id="modalSupplierDetail">
+  <div class="modal">
+    <div class="modal-header">
+      <button class="modal-btn" onclick="closeModal('modalSupplierDetail')">إغلاق</button>
+      <div class="modal-title" id="detailModalTitle">تفاصيل التاجر</div>
+      <button class="modal-btn delete-btn" onclick="deleteCurrentSupplier()">حذف</button>
+    </div>
+    <div class="modal-body" id="supplierDetailBody"></div>
+  </div>
+</div>
+
+<!-- Modal: التقرير الشهري -->
+<div class="modal-overlay" id="modalMonthlyReport">
+  <div class="modal">
+    <div class="modal-header">
+      <button class="modal-btn" onclick="closeModal('modalMonthlyReport')">إغلاق</button>
+      <div class="modal-title">التقرير الشهري</div>
+      <button class="modal-btn bold" onclick="exportMonthlyReportPDF()">PDF</button>
+    </div>
+    <div class="modal-body">
+      <div class="input-card">
+        <div class="input-row">
+          <div class="input-label"><div class="icon-box">📅</div>اختر الشهر</div>
+          <div class="input-value">
+            <input type="month" id="monthlyReportMonth" onchange="renderMonthlyReport()">
+          </div>
+        </div>
+      </div>
+      <div id="monthlyReportContent"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: التقرير السنوي -->
+<div class="modal-overlay" id="modalYearlyReport">
+  <div class="modal">
+    <div class="modal-header">
+      <button class="modal-btn" onclick="closeModal('modalYearlyReport')">إغلاق</button>
+      <div class="modal-title">التقرير السنوي</div>
+      <button class="modal-btn bold" onclick="exportYearlyReportPDF()">PDF</button>
+    </div>
+    <div class="modal-body">
+      <div class="input-card">
+        <div class="input-row">
+          <div class="input-label"><div class="icon-box">📆</div>اختر السنة</div>
+          <div class="input-value">
+            <select id="yearlyReportYear" onchange="renderYearlyReport()"></select>
+          </div>
+        </div>
+      </div>
+      <div id="yearlyReportContent"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: توليد PDF -->
+<div class="modal-overlay" id="modalPDFGenerator">
+  <div class="modal">
+    <div class="modal-header">
+      <button class="modal-btn" onclick="closeModal('modalPDFGenerator')">إلغاء</button>
+      <div class="modal-title">كشف حساب PDF</div>
+      <button class="modal-btn bold" onclick="generateSupplierPDF()">إنشاء</button>
+    </div>
+    <div class="modal-body">
+      <div class="input-card">
+        <div class="input-row">
+          <div class="input-label"><div class="icon-box">🏢</div>التاجر</div>
+          <div class="input-value">
+            <select id="pdfSupplier"><option value="">اختر تاجراً</option></select>
+          </div>
+        </div>
+        <div class="input-row">
+          <div class="input-label"><div class="icon-box">📅</div>من تاريخ</div>
+          <div class="input-value">
+            <input type="date" id="pdfDateFrom">
+          </div>
+        </div>
+        <div class="input-row">
+          <div class="input-label"><div class="icon-box">📅</div>إلى تاريخ</div>
+          <div class="input-value">
+            <input type="date" id="pdfDateTo">
+          </div>
+        </div>
+      </div>
+
+      <div style="background: rgba(0,122,255,0.08); border-radius: 12px; padding: 14px; margin-top: 12px;">
+        <div style="font-size: 13px; color: #007AFF; line-height: 1.6;">
+          💡 <b>نصيحة:</b> اترك التواريخ فارغة لكشف حساب كامل، أو حدد فترة معينة لكشف جزئي.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// =================================================================
+// قاعدة البيانات - تستخدم localStorage (تبقى محفوظة دائماً على الجهاز)
+// =================================================================
+
+const DB_KEY_SUPPLIERS = 'pharmacy_suppliers';
+const DB_KEY_TRANSACTIONS = 'pharmacy_transactions';
+const DB_KEY_WELCOME = 'pharmacy_welcome_shown';
+
+const COLORS = ['FF3B30','FF9500','FFCC00','34C759','00C7BE','30B0C7','007AFF','5856D6','AF52DE','FF2D55'];
+
+// =================================================================
+// ⭐ نظام الحساب الدقيق (Precise Math) - يحل مشاكل الكسور
+// نحول كل المبالغ إلى "قروش" (أعداد صحيحة) للحساب، ثم نعيدها للدنانير
+// مثال: 100.50 د.ل = 10050 قرش
+// =================================================================
+
+// تحويل من دينار إلى قروش (مع تقريب دقيق)
+function toCents(amount) {
+  // نضرب في 100 ونقرب لأقرب عدد صحيح لتجنب أخطاء الكسور
+  return Math.round((parseFloat(amount) || 0) * 100);
+}
+
+// تحويل من قروش إلى دينار
+function fromCents(cents) {
+  return cents / 100;
+}
+
+// جمع دقيق
+function addMoney(a, b) {
+  return fromCents(toCents(a) + toCents(b));
+}
+
+// طرح دقيق
+function subMoney(a, b) {
+  return fromCents(toCents(a) - toCents(b));
+}
+
+// جمع مصفوفة من الأرقام بدقة
+function sumMoney(arr) {
+  const totalCents = arr.reduce((sum, n) => sum + toCents(n), 0);
+  return fromCents(totalCents);
+}
+
+// تقريب أي رقم لمنزلتين عشريتين بدقة
+function roundMoney(amount) {
+  return fromCents(toCents(amount));
+}
+
+// مقارنة دقيقة (لتجنب 0.1 + 0.2 !== 0.3)
+function moneyEquals(a, b) {
+  return toCents(a) === toCents(b);
+}
+
+function loadSuppliers() {
+  try { return JSON.parse(localStorage.getItem(DB_KEY_SUPPLIERS) || '[]'); }
+  catch(e) { return []; }
+}
+
+function loadTransactions() {
+  try { return JSON.parse(localStorage.getItem(DB_KEY_TRANSACTIONS) || '[]'); }
+  catch(e) { return []; }
+}
+
+function saveSuppliers(data) {
+  localStorage.setItem(DB_KEY_SUPPLIERS, JSON.stringify(data));
+}
+
+function saveTransactions(data) {
+  localStorage.setItem(DB_KEY_TRANSACTIONS, JSON.stringify(data));
+}
+
+// =================================================================
+// المساعدات
+// =================================================================
+
+function generateId() {
+  return 'id_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+}
+
+function getInitials(name) {
+  const words = name.split(' ').filter(w => !['شركة','مؤسسة'].includes(w));
+  if (words.length === 0) return name.substring(0, 2);
+  const first = words[0];
+  return first.length >= 2 ? first.substring(0, 2) : first;
+}
+
+function getColor(name) {
+  let hash = 0;
+  for (let i = 0; i < name.length; i++) hash = name.charCodeAt(i) + ((hash << 5) - hash);
+  return COLORS[Math.abs(hash) % COLORS.length];
+}
+
+function formatMoney(n) {
+  // التقريب الدقيق قبل العرض
+  const rounded = roundMoney(n);
+  return new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(rounded) + ' د.ل';
+}
+
+function formatShort(n) {
+  // التقريب الدقيق ثم العرض بدون كسور
+  const rounded = roundMoney(n);
+  return new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 }).format(rounded);
+}
+
+// عرض المبلغ مع الكسور (للأرقام التي قد تحتوي كسور)
+function formatMoneyFull(n) {
+  const rounded = roundMoney(n);
+  return new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(rounded);
+}
+
+function formatDate(d) {
+  const date = new Date(d);
+  return date.getFullYear() + '/' + String(date.getMonth()+1).padStart(2,'0') + '/' + String(date.getDate()).padStart(2,'0');
+}
+
+function relativeDate(d) {
+  const days = Math.floor((Date.now() - new Date(d)) / 86400000);
+  if (days === 0) return 'اليوم';
+  if (days === 1) return 'أمس';
+  if (days < 7) return 'قبل ' + days + ' أيام';
+  if (days < 30) return 'قبل ' + Math.floor(days/7) + ' أسابيع';
+  return 'قبل ' + Math.floor(days/30) + ' شهر';
+}
+
+function getSupplierData(supplier) {
+  const transactions = loadTransactions().filter(t => t.supplierId === supplier.id);
+
+  // حساب دقيق باستخدام القروش لتجنب أخطاء الكسور
+  const totalNewDebts = sumMoney(transactions.filter(t => t.type === 'debt').map(t => t.amount));
+  const totalPaid = sumMoney(transactions.filter(t => t.type === 'pay').map(t => t.amount));
+
+  // الرصيد = القديم + الجديد - المسدد (بحساب دقيق)
+  const openingBalance = roundMoney(supplier.openingBalance || 0);
+  const balanceCents = toCents(openingBalance) + toCents(totalNewDebts) - toCents(totalPaid);
+  const balance = fromCents(balanceCents);
+
+  const lastTransaction = transactions.length > 0
+    ? transactions.reduce((latest, t) => new Date(t.date) > new Date(latest.date) ? t : latest)
+    : null;
+
+  let status = 'paid';
+  if (balanceCents < 0) status = 'credit';
+  else if (balanceCents === 0) status = 'paid';
+  else if (balanceCents < 100000) status = 'good';    // أقل من 1000 د.ل
+  else if (balanceCents < 500000) status = 'medium';  // أقل من 5000 د.ل
+  else status = 'high';
+
+  return { ...supplier, totalNewDebts, totalPaid, balance, transactionsCount: transactions.length, lastTransaction, status, transactions };
+}
+
+const STATUS_COLORS = {
+  paid: '34C759', credit: '30B0C7', good: '007AFF', medium: 'FF9500', high: 'FF3B30'
+};
+const STATUS_LABELS = {
+  paid: 'مسدد', credit: 'له رصيد', good: 'جيد', medium: 'متوسط', high: 'مرتفع'
+};
+
+// =================================================================
+// التنقل بين الشاشات
+// =================================================================
+
+let currentTab = 'dashboard';
+
+function switchTab(tab) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
+  document.getElementById('screen-' + tab).classList.add('active');
+  document.querySelector(`[data-tab="${tab}"]`).classList.add('active');
+  currentTab = tab;
+  render();
+  window.scrollTo(0, 0);
+}
+
+// =================================================================
+// الـ Modals
+// =================================================================
+
+function openModal(id) {
+  document.getElementById(id).classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(id) {
+  document.getElementById(id).classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// =================================================================
+// إضافة/تعديل تاجر
+// =================================================================
+
+let editingSupplierId = null;
+
+function openAddSupplier() {
+  editingSupplierId = null;
+  document.getElementById('supplierModalTitle').textContent = 'تاجر جديد';
+  document.getElementById('supplierName').value = '';
+  document.getElementById('supplierContact').value = '';
+  document.getElementById('supplierPhone').value = '';
+  document.getElementById('supplierAddress').value = '';
+  document.getElementById('supplierOpeningBalance').value = '';
+  openModal('modalSupplier');
+  setTimeout(() => document.getElementById('supplierName').focus(), 100);
+}
+
+function saveSupplier() {
+  const name = document.getElementById('supplierName').value.trim();
+  if (!name) {
+    alert('يرجى إدخال اسم الشركة');
+    return;
+  }
+
+  const suppliers = loadSuppliers();
+  // تقريب دقيق للرصيد الافتتاحي
+  const rawBalance = parseFloat(document.getElementById('supplierOpeningBalance').value) || 0;
+  const openingBalance = roundMoney(rawBalance);
+
+  const data = {
+    id: editingSupplierId || generateId(),
+    name,
+    contactPerson: document.getElementById('supplierContact').value.trim(),
+    phoneNumber: document.getElementById('supplierPhone').value.trim(),
+    address: document.getElementById('supplierAddress').value.trim(),
+    openingBalance,
+    createdAt: new Date().toISOString(),
+    avatarColor: getColor(name)
+  };
+
+  if (editingSupplierId) {
+    const idx = suppliers.findIndex(s => s.id === editingSupplierId);
+    if (idx >= 0) suppliers[idx] = { ...suppliers[idx], ...data };
+  } else {
+    suppliers.push(data);
+  }
+
+  saveSuppliers(suppliers);
+  closeModal('modalSupplier');
+  render();
+}
+
+// =================================================================
+// إضافة معاملة
+// =================================================================
+
+let currentTransType = 'debt';
+
+function openAddTransaction(preselectedSupplierId) {
+  document.getElementById('transAmount').value = '';
+  document.getElementById('transInvoice').value = '';
+  document.getElementById('transNotes').value = '';
+  document.getElementById('transDate').value = new Date().toISOString().split('T')[0];
+
+  // ملء قائمة التجار
+  const suppliers = loadSuppliers();
+  const select = document.getElementById('transSupplier');
+  select.innerHTML = '<option value="">اختر تاجراً</option>' +
+    suppliers.map(s => `<option value="${s.id}">${s.name}</option>`).join('');
+
+  if (preselectedSupplierId) select.value = preselectedSupplierId;
+
+  setTransType('debt', document.querySelector('.type-btn.debt'));
+  openModal('modalTransaction');
+}
+
+function setTransType(type, btn) {
+  currentTransType = type;
+  document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  const input = document.getElementById('transAmount');
+  if (type === 'debt') {
+    input.classList.remove('pay');
+    document.getElementById('transPayment').value = 'deferred';
+  } else {
+    input.classList.add('pay');
+    document.getElementById('transPayment').value = 'cash';
+  }
+}
+
+function saveTransaction() {
+  const rawAmount = parseFloat(document.getElementById('transAmount').value);
+  const supplierId = document.getElementById('transSupplier').value;
+
+  if (!rawAmount || rawAmount <= 0) { alert('يرجى إدخال مبلغ صحيح'); return; }
+  if (!supplierId) { alert('يرجى اختيار التاجر'); return; }
+
+  // تقريب دقيق للمبلغ قبل الحفظ (لمنزلتين عشريتين)
+  const amount = roundMoney(rawAmount);
+
+  const transactions = loadTransactions();
+  transactions.push({
+    id: generateId(),
+    supplierId,
+    type: currentTransType,
+    amount,
+    date: document.getElementById('transDate').value,
+    invoiceNumber: document.getElementById('transInvoice').value.trim(),
+    paymentMethod: document.getElementById('transPayment').value,
+    notes: document.getElementById('transNotes').value.trim(),
+    createdAt: new Date().toISOString()
+  });
+
+  saveTransactions(transactions);
+  closeModal('modalTransaction');
+
+  // اهتزاز خفيف
+  if (navigator.vibrate) navigator.vibrate(50);
+
+  render();
+}
+
+// =================================================================
+// تفاصيل التاجر
+// =================================================================
+
+let currentSupplierId = null;
+
+function openSupplierDetail(id) {
+  currentSupplierId = id;
+  const supplier = getSupplierData(loadSuppliers().find(s => s.id === id));
+  document.getElementById('detailModalTitle').textContent = supplier.name;
+
+  const body = document.getElementById('supplierDetailBody');
+  const balanceClass = supplier.status === 'paid' || supplier.status === 'credit' ? 'paid' :
+                       supplier.status === 'good' ? 'good' :
+                       supplier.status === 'medium' ? 'medium' : '';
+
+  body.innerHTML = `
+    <div style="text-align:center; padding: 8px 0 14px;">
+      <div class="avatar lg" style="margin:0 auto; background:rgba(${parseInt(supplier.avatarColor.substr(0,2),16)},${parseInt(supplier.avatarColor.substr(2,2),16)},${parseInt(supplier.avatarColor.substr(4,2),16)},0.15); color:#${supplier.avatarColor};">
+        ${getInitials(supplier.name)}
+      </div>
+      ${supplier.contactPerson ? `<div style="margin-top:10px; color:#8E8E93; font-size:13px;">👤 ${supplier.contactPerson}</div>` : ''}
+      ${supplier.phoneNumber ? `<div style="margin-top:4px; color:#8E8E93; font-size:13px;">📱 ${supplier.phoneNumber}</div>` : ''}
+    </div>
+
+    <div class="mini-stats" style="margin: 0 0 12px;">
+      <div class="mini-stat">
+        <div class="mini-stat-label">القديمة</div>
+        <div class="mini-stat-value" style="color:#FF9500">${formatMoneyFull(supplier.openingBalance || 0)}</div>
+      </div>
+      <div class="mini-stat">
+        <div class="mini-stat-label">الجديدة</div>
+        <div class="mini-stat-value" style="color:#FF3B30">${formatMoneyFull(supplier.totalNewDebts)}</div>
+      </div>
+      <div class="mini-stat">
+        <div class="mini-stat-label">المسدد</div>
+        <div class="mini-stat-value" style="color:#34C759">${formatMoneyFull(supplier.totalPaid)}</div>
+      </div>
+    </div>
+
+    <div class="balance-card ${balanceClass}" style="margin: 0 0 12px;">
+      <div class="balance-label">الرصيد المتبقي</div>
+      <div class="balance-value">${formatMoney(supplier.balance)}</div>
+    </div>
+
+    <div class="quick-actions" style="margin: 0 0 12px;">
+      <button class="action-btn" onclick="callSupplier('${supplier.phoneNumber}')">
+        <div style="font-size:18px;">📞</div><span>اتصال</span>
+      </button>
+      <button class="action-btn" onclick="whatsappSupplier('${supplier.phoneNumber}')">
+        <div style="font-size:18px;">💬</div><span>واتساب</span>
+      </button>
+      <button class="action-btn" onclick="generateQuickPDF('${supplier.id}')">
+        <div style="font-size:18px;">📄</div><span>PDF</span>
+      </button>
+      <button class="action-btn" onclick="editSupplierFromDetail()">
+        <div style="font-size:18px;">✏️</div><span>تعديل</span>
+      </button>
+    </div>
+
+    <div class="form-section-title" style="padding-right: 0;">سجل المعاملات (${supplier.transactionsCount})</div>
+    <div class="card" style="margin: 0;">
+      ${supplier.transactions.length === 0
+        ? '<div style="padding:20px; text-align:center; color:#8E8E93;">لا توجد معاملات</div>'
+        : supplier.transactions
+            .sort((a,b) => new Date(b.date) - new Date(a.date))
+            .map(t => `
+              <div class="transaction-row" onclick="deleteTransaction('${t.id}')">
+                <div class="trans-icon ${t.type}">${t.type === 'debt' ? '↗' : '↘'}</div>
+                <div class="row-content">
+                  <div class="row-title" style="font-size:14px;">${t.type === 'debt' ? 'دين جديد' : 'دفعة سداد'}</div>
+                  <div class="row-sub">${formatDate(t.date)}${t.invoiceNumber ? ' · ' + t.invoiceNumber : ''}</div>
+                </div>
+                <div class="row-end">
+                  <div class="row-amount" style="color:#${t.type === 'debt' ? 'FF3B30' : '34C759'}">
+                    ${t.type === 'debt' ? '+' : '−'}${formatMoneyFull(t.amount)}
+                  </div>
+                </div>
+              </div>
+            `).join('')
+      }
+    </div>
+  `;
+
+  openModal('modalSupplierDetail');
+}
+
+function callSupplier(phone) {
+  if (!phone) { alert('لا يوجد رقم هاتف لهذا التاجر'); return; }
+  window.location.href = 'tel:' + phone;
+}
+
+function whatsappSupplier(phone) {
+  if (!phone) { alert('لا يوجد رقم هاتف لهذا التاجر'); return; }
+  const cleaned = phone.replace(/[^0-9]/g, '');
+  window.open('https://wa.me/' + cleaned, '_blank');
+}
+
+function editSupplierFromDetail() {
+  const supplier = loadSuppliers().find(s => s.id === currentSupplierId);
+  if (!supplier) return;
+  editingSupplierId = supplier.id;
+  document.getElementById('supplierModalTitle').textContent = 'تعديل التاجر';
+  document.getElementById('supplierName').value = supplier.name;
+  document.getElementById('supplierContact').value = supplier.contactPerson || '';
+  document.getElementById('supplierPhone').value = supplier.phoneNumber || '';
+  document.getElementById('supplierAddress').value = supplier.address || '';
+  document.getElementById('supplierOpeningBalance').value = supplier.openingBalance || 0;
+  closeModal('modalSupplierDetail');
+  openModal('modalSupplier');
+}
+
+function addTransForSupplier() {
+  closeModal('modalSupplierDetail');
+  openAddTransaction(currentSupplierId);
+}
+
+function deleteCurrentSupplier() {
+  if (!confirm('هل تريد حذف هذا التاجر وكل معاملاته؟ لا يمكن التراجع.')) return;
+  const suppliers = loadSuppliers().filter(s => s.id !== currentSupplierId);
+  const transactions = loadTransactions().filter(t => t.supplierId !== currentSupplierId);
+  saveSuppliers(suppliers);
+  saveTransactions(transactions);
+  closeModal('modalSupplierDetail');
+  render();
+}
+
+function deleteTransaction(id) {
+  if (!confirm('هل تريد حذف هذه المعاملة؟')) return;
+  const transactions = loadTransactions().filter(t => t.id !== id);
+  saveTransactions(transactions);
+  openSupplierDetail(currentSupplierId);
+  render();
+}
+
+// =================================================================
+// الفلترة
+// =================================================================
+
+let currentFilter = 'all';
+let currentTransFilter = 'all';
+
+// =================================================================
+// 🔍 البحث المتقدم - حالات الفلاتر
+// =================================================================
+
+const advSupplierFilters = {
+  status: 'all',
+  activity: 'all',
+  sort: 'balance',
+  minBalance: null,
+  maxBalance: null
+};
+
+const advTransFilters = {
+  type: 'all',
+  method: 'all',
+  minAmount: null,
+  maxAmount: null,
+  dateFrom: null,
+  dateTo: null,
+  supplierId: ''
+};
+
+// تبديل عرض لوحة البحث المتقدم
+function toggleAdvancedSearch(target) {
+  if (target === 'supplier') {
+    const panel = document.getElementById('advSearchPanel');
+    const toggle = document.getElementById('advSearchToggle');
+    const chevron = document.getElementById('advSearchChevron');
+    panel.classList.toggle('active');
+    toggle.classList.toggle('active');
+    chevron.textContent = panel.classList.contains('active') ? '▲' : '▼';
+  } else if (target === 'trans') {
+    const panel = document.getElementById('advTransPanel');
+    const toggle = document.getElementById('advTransToggle');
+    const chevron = document.getElementById('advTransChevron');
+    panel.classList.toggle('active');
+    toggle.classList.toggle('active');
+    chevron.textContent = panel.classList.contains('active') ? '▲' : '▼';
+
+    // عند فتح اللوحة لأول مرة، عبئ قائمة التجار
+    if (panel.classList.contains('active')) {
+      const select = document.getElementById('transSupplierFilter');
+      if (select.options.length <= 1) {
+        const suppliers = loadSuppliers();
+        select.innerHTML = '<option value="">كل التجار</option>' +
+          suppliers.map(s => `<option value="${s.id}">${s.name}</option>`).join('');
+      }
+    }
+  }
+}
+
+// تعيين فلتر للتجار
+function setAdvFilter(btn, group) {
+  document.querySelectorAll(`[data-supplier-filter="${group}"]`).forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  advSupplierFilters[group] = btn.dataset.value;
+  renderSuppliers();
+}
+
+// تعيين فلتر للمعاملات
+function setTransAdvFilter(btn, group) {
+  document.querySelectorAll(`[data-trans-filter="${group}"]`).forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  advTransFilters[group] = btn.dataset.value;
+  renderTransactions();
+}
+
+// إعداد فترة سريعة
+function setDatePreset(preset) {
+  const today = new Date();
+  const formatDateInput = (d) => d.toISOString().split('T')[0];
+  let from, to;
+
+  switch (preset) {
+    case 'today':
+      from = to = formatDateInput(today);
+      break;
+    case 'week':
+      const weekAgo = new Date(today);
+      weekAgo.setDate(weekAgo.getDate() - 7);
+      from = formatDateInput(weekAgo);
+      to = formatDateInput(today);
+      break;
+    case 'month':
+      from = formatDateInput(new Date(today.getFullYear(), today.getMonth(), 1));
+      to = formatDateInput(today);
+      break;
+    case 'lastMonth':
+      from = formatDateInput(new Date(today.getFullYear(), today.getMonth() - 1, 1));
+      to = formatDateInput(new Date(today.getFullYear(), today.getMonth(), 0));
+      break;
+    case 'quarter':
+      const quarterAgo = new Date(today);
+      quarterAgo.setMonth(quarterAgo.getMonth() - 3);
+      from = formatDateInput(quarterAgo);
+      to = formatDateInput(today);
+      break;
+    case 'year':
+      from = formatDateInput(new Date(today.getFullYear(), 0, 1));
+      to = formatDateInput(today);
+      break;
+  }
+
+  document.getElementById('transDateFrom').value = from;
+  document.getElementById('transDateTo').value = to;
+  renderTransactions();
+
+  if (navigator.vibrate) navigator.vibrate(30);
+}
+
+// مسح فلاتر التجار
+function resetSupplierFilters() {
+  advSupplierFilters.status = 'all';
+  advSupplierFilters.activity = 'all';
+  advSupplierFilters.sort = 'balance';
+  advSupplierFilters.minBalance = null;
+  advSupplierFilters.maxBalance = null;
+
+  document.querySelectorAll('[data-supplier-filter]').forEach(b => {
+    b.classList.toggle('active', b.dataset.value === 'all' || (b.dataset.supplierFilter === 'sort' && b.dataset.value === 'balance'));
+  });
+
+  document.getElementById('supplierMinBalance').value = '';
+  document.getElementById('supplierMaxBalance').value = '';
+  document.getElementById('supplierSearch').value = '';
+
+  renderSuppliers();
+}
+
+// مسح فلاتر المعاملات
+function resetTransFilters() {
+  advTransFilters.type = 'all';
+  advTransFilters.method = 'all';
+  advTransFilters.minAmount = null;
+  advTransFilters.maxAmount = null;
+  advTransFilters.dateFrom = null;
+  advTransFilters.dateTo = null;
+  advTransFilters.supplierId = '';
+
+  document.querySelectorAll('[data-trans-filter]').forEach(b => {
+    b.classList.toggle('active', b.dataset.value === 'all');
+  });
+
+  document.getElementById('transMinAmount').value = '';
+  document.getElementById('transMaxAmount').value = '';
+  document.getElementById('transDateFrom').value = '';
+  document.getElementById('transDateTo').value = '';
+  document.getElementById('transSearch').value = '';
+  document.getElementById('transSupplierFilter').value = '';
+
+  renderTransactions();
+}
+
+// عدّ الفلاتر النشطة للتجار
+function countSupplierActiveFilters() {
+  let count = 0;
+  if (advSupplierFilters.status !== 'all') count++;
+  if (advSupplierFilters.activity !== 'all') count++;
+  if (advSupplierFilters.sort !== 'balance') count++;
+  if (document.getElementById('supplierMinBalance').value) count++;
+  if (document.getElementById('supplierMaxBalance').value) count++;
+  return count;
+}
+
+// عدّ الفلاتر النشطة للمعاملات
+function countTransActiveFilters() {
+  let count = 0;
+  if (advTransFilters.type !== 'all') count++;
+  if (advTransFilters.method !== 'all') count++;
+  if (document.getElementById('transMinAmount').value) count++;
+  if (document.getElementById('transMaxAmount').value) count++;
+  if (document.getElementById('transDateFrom').value) count++;
+  if (document.getElementById('transDateTo').value) count++;
+  if (document.getElementById('transSupplierFilter').value) count++;
+  return count;
+}
+
+// تصدير نتائج البحث للتجار
+function exportFilteredSuppliers() {
+  const filtered = getFilteredSuppliers();
+  if (filtered.length === 0) {
+    alert('لا توجد نتائج لتصديرها');
+    return;
+  }
+
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF('p', 'mm', 'a4');
+
+  addPDFHeader(doc, `Filtered Suppliers Report (${filtered.length} results)`);
+
+  let y = 48;
+  doc.setTextColor(0, 0, 0);
+  doc.setFontSize(11);
+  doc.setFont('helvetica', 'bold');
+  doc.text(`Total Filtered Results: ${filtered.length}`, 14, y);
+  y += 4;
+
+  const tableData = filtered.map((s, i) => [
+    (i + 1).toString(),
+    s.name,
+    (s.openingBalance || 0).toFixed(2),
+    s.totalNewDebts.toFixed(2),
+    s.totalPaid.toFixed(2),
+    s.balance.toFixed(2),
+    s.status === 'high' ? 'High' :
+    s.status === 'medium' ? 'Medium' :
+    s.status === 'good' ? 'Good' :
+    s.status === 'credit' ? 'Credit' : 'Paid'
+  ]);
+
+  doc.autoTable({
+    startY: y + 2,
+    head: [['#', 'Supplier Name', 'Opening', 'New Debts', 'Paid', 'Balance', 'Status']],
+    body: tableData,
+    theme: 'striped',
+    headStyles: { fillColor: [31, 78, 120], textColor: [255, 255, 255], fontSize: 9, halign: 'center' },
+    bodyStyles: { fontSize: 8, halign: 'center' },
+    columnStyles: {
+      0: { cellWidth: 10 },
+      1: { cellWidth: 50, halign: 'left' },
+      2: { cellWidth: 24, textColor: [255, 149, 0] },
+      3: { cellWidth: 24, textColor: [192, 0, 0] },
+      4: { cellWidth: 24, textColor: [0, 130, 50] },
+      5: { cellWidth: 26, fontStyle: 'bold' },
+      6: { cellWidth: 22 }
+    }
+  });
+
+  const totalPages = doc.internal.getNumberOfPages();
+  for (let i = 1; i <= totalPages; i++) {
+    doc.setPage(i);
+    addPDFFooter(doc, i, totalPages);
+  }
+
+  doc.save(`نتائج_البحث_${new Date().toISOString().split('T')[0]}.pdf`);
+}
+
+// تصدير نتائج البحث للمعاملات
+function exportFilteredTransactions() {
+  const filtered = getFilteredTransactions();
+  if (filtered.length === 0) {
+    alert('لا توجد نتائج لتصديرها');
+    return;
+  }
+
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF('p', 'mm', 'a4');
+
+  addPDFHeader(doc, `Filtered Transactions Report (${filtered.length} results)`);
+
+  let y = 48;
+  const allSuppliers = loadSuppliers();
+  const totalDebts = sumMoney(filtered.filter(t => t.type === 'debt').map(t => t.amount));
+  const totalPays = sumMoney(filtered.filter(t => t.type === 'pay').map(t => t.amount));
+
+  // ملخص
+  const cardWidth = 90;
+  [
+    { label: 'Total Debts', value: totalDebts.toFixed(2), color: [192, 0, 0] },
+    { label: 'Total Payments', value: totalPays.toFixed(2), color: [0, 130, 50] }
+  ].forEach((card, i) => {
+    const x = 14 + i * (cardWidth + 1);
+    doc.setFillColor(...card.color);
+    doc.roundedRect(x, y, cardWidth, 22, 2, 2, 'F');
+    doc.setTextColor(255, 255, 255);
+    doc.setFontSize(9);
+    doc.text(card.label, x + cardWidth/2, y + 7, { align: 'center' });
+    doc.setFontSize(13);
+    doc.setFont('helvetica', 'bold');
+    doc.text(card.value + ' LYD', x + cardWidth/2, y + 16, { align: 'center' });
+  });
+
+  y += 30;
+
+  const tableData = filtered.map(t => {
+    const supplier = allSuppliers.find(s => s.id === t.supplierId);
+    return [
+      t.date,
+      supplier ? supplier.name : '-',
+      t.type === 'debt' ? 'Debt' : 'Payment',
+      t.invoiceNumber || '-',
+      t.type === 'debt' ? t.amount.toFixed(2) : '-',
+      t.type === 'pay' ? t.amount.toFixed(2) : '-'
+    ];
+  });
+
+  doc.autoTable({
+    startY: y,
+    head: [['Date', 'Supplier', 'Type', 'Invoice', 'Debt (+)', 'Paid (-)']],
+    body: tableData,
+    theme: 'striped',
+    headStyles: { fillColor: [31, 78, 120], textColor: [255, 255, 255], fontSize: 9, halign: 'center' },
+    bodyStyles: { fontSize: 8, halign: 'center' },
+    columnStyles: {
+      0: { cellWidth: 24 },
+      1: { cellWidth: 50, halign: 'left' },
+      2: { cellWidth: 22 },
+      3: { cellWidth: 28 },
+      4: { cellWidth: 28, textColor: [192, 0, 0] },
+      5: { cellWidth: 28, textColor: [0, 130, 50] }
+    }
+  });
+
+  const totalPages = doc.internal.getNumberOfPages();
+  for (let i = 1; i <= totalPages; i++) {
+    doc.setPage(i);
+    addPDFFooter(doc, i, totalPages);
+  }
+
+  doc.save(`نتائج_بحث_المعاملات_${new Date().toISOString().split('T')[0]}.pdf`);
+}
+
+// الدالة الموحدة للحصول على التجار المفلترة
+function getFilteredSuppliers() {
+  let suppliers = loadSuppliers().map(getSupplierData);
+  const search = document.getElementById('supplierSearch').value.toLowerCase();
+
+  // الفلتر القديم (chips بسيطة)
+  if (currentFilter !== 'all') {
+    suppliers = suppliers.filter(s => {
+      if (currentFilter === 'paid') return s.status === 'paid' || s.status === 'credit';
+      return s.status === currentFilter;
+    });
+  }
+
+  // فلتر الحالة المتقدم
+  if (advSupplierFilters.status !== 'all') {
+    suppliers = suppliers.filter(s => {
+      if (advSupplierFilters.status === 'paid') return s.status === 'paid' || s.status === 'credit';
+      return s.status === advSupplierFilters.status;
+    });
+  }
+
+  // فلتر النطاق
+  const minB = parseFloat(document.getElementById('supplierMinBalance').value);
+  const maxB = parseFloat(document.getElementById('supplierMaxBalance').value);
+  if (!isNaN(minB)) suppliers = suppliers.filter(s => toCents(s.balance) >= toCents(minB));
+  if (!isNaN(maxB)) suppliers = suppliers.filter(s => toCents(s.balance) <= toCents(maxB));
+
+  // فلتر النشاط
+  if (advSupplierFilters.activity !== 'all') {
+    const now = new Date();
+    suppliers = suppliers.filter(s => {
+      if (!s.lastTransaction) return advSupplierFilters.activity === 'inactive';
+      const diff = (now - new Date(s.lastTransaction.date)) / 86400000;
+      switch (advSupplierFilters.activity) {
+        case 'week': return diff <= 7;
+        case 'month': return diff <= 30;
+        case 'quarter': return diff <= 90;
+        case 'inactive': return diff > 60;
+        default: return true;
+      }
+    });
+  }
+
+  // البحث النصي الموسع
+  if (search) {
+    suppliers = suppliers.filter(s => {
+      const hay = [
+        s.name,
+        s.contactPerson || '',
+        s.phoneNumber || '',
+        s.address || '',
+        s.notes || '',
+        ...s.transactions.map(t => (t.invoiceNumber || '') + ' ' + (t.notes || ''))
+      ].join(' ').toLowerCase();
+      return hay.includes(search);
+    });
+  }
+
+  // الترتيب
+  switch (advSupplierFilters.sort) {
+    case 'name':
+      suppliers.sort((a, b) => a.name.localeCompare(b.name, 'ar'));
+      break;
+    case 'recent':
+      suppliers.sort((a, b) => {
+        if (!a.lastTransaction) return 1;
+        if (!b.lastTransaction) return -1;
+        return new Date(b.lastTransaction.date) - new Date(a.lastTransaction.date);
+      });
+      break;
+    case 'transactions':
+      suppliers.sort((a, b) => b.transactionsCount - a.transactionsCount);
+      break;
+    case 'balance':
+    default:
+      suppliers.sort((a, b) => toCents(b.balance) - toCents(a.balance));
+  }
+
+  return suppliers;
+}
+
+// الدالة الموحدة للحصول على المعاملات المفلترة
+function getFilteredTransactions() {
+  let transactions = loadTransactions();
+  const search = document.getElementById('transSearch') ? document.getElementById('transSearch').value.toLowerCase() : '';
+
+  // فلتر النوع البسيط
+  if (currentTransFilter !== 'all') {
+    transactions = transactions.filter(t => t.type === currentTransFilter);
+  }
+
+  // فلتر النوع المتقدم
+  if (advTransFilters.type !== 'all') {
+    transactions = transactions.filter(t => t.type === advTransFilters.type);
+  }
+
+  // فلتر طريقة الدفع
+  if (advTransFilters.method !== 'all') {
+    transactions = transactions.filter(t => t.paymentMethod === advTransFilters.method);
+  }
+
+  // فلتر التاجر
+  const supplierFilter = document.getElementById('transSupplierFilter') ? document.getElementById('transSupplierFilter').value : '';
+  if (supplierFilter) {
+    transactions = transactions.filter(t => t.supplierId === supplierFilter);
+  }
+
+  // فلتر النطاق
+  const minA = parseFloat(document.getElementById('transMinAmount') ? document.getElementById('transMinAmount').value : '');
+  const maxA = parseFloat(document.getElementById('transMaxAmount') ? document.getElementById('transMaxAmount').value : '');
+  if (!isNaN(minA)) transactions = transactions.filter(t => toCents(t.amount) >= toCents(minA));
+  if (!isNaN(maxA)) transactions = transactions.filter(t => toCents(t.amount) <= toCents(maxA));
+
+  // فلتر التاريخ
+  const dFrom = document.getElementById('transDateFrom') ? document.getElementById('transDateFrom').value : '';
+  const dTo = document.getElementById('transDateTo') ? document.getElementById('transDateTo').value : '';
+  if (dFrom) transactions = transactions.filter(t => t.date >= dFrom);
+  if (dTo) transactions = transactions.filter(t => t.date <= dTo);
+
+  // البحث النصي الموسع
+  if (search) {
+    const allSuppliers = loadSuppliers();
+    transactions = transactions.filter(t => {
+      const supplier = allSuppliers.find(s => s.id === t.supplierId);
+      const hay = [
+        t.invoiceNumber || '',
+        t.notes || '',
+        supplier ? supplier.name : '',
+        supplier && supplier.contactPerson || ''
+      ].join(' ').toLowerCase();
+      return hay.includes(search);
+    });
+  }
+
+  return transactions;
+}
+
+function setFilter(filter, btn) {
+  currentFilter = filter;
+  document.querySelectorAll('#filterChips .chip').forEach(c => c.classList.remove('active'));
+  btn.classList.add('active');
+  renderSuppliers();
+}
+
+function setTransFilter(filter, btn) {
+  currentTransFilter = filter;
+  btn.parentElement.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+  btn.classList.add('active');
+  renderTransactions();
+}
+
+// =================================================================
+// العرض
+// =================================================================
+
+function render() {
+  renderDashboard();
+  renderSuppliers();
+  renderTransactions();
+  renderAnalytics();
+}
+
+function renderDashboard() {
+  const suppliers = loadSuppliers().map(getSupplierData);
+
+  // حساب دقيق للإجماليات
+  const totalBalance = sumMoney(suppliers.map(s => s.balance));
+  const totalNewDebts = sumMoney(suppliers.map(s => s.totalNewDebts));
+  const totalPaid = sumMoney(suppliers.map(s => s.totalPaid));
+
+  document.getElementById('totalBalance').textContent = formatMoney(totalBalance);
+  document.getElementById('totalNewDebts').textContent = '+' + formatShort(totalNewDebts);
+  document.getElementById('totalPaid').textContent = formatShort(totalPaid);
+  document.getElementById('suppliersCount').textContent = suppliers.length;
+
+  // الإحصائيات الشهرية - بحساب دقيق
+  const now = new Date();
+  const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
+  const monthTrans = loadTransactions().filter(t => new Date(t.date) >= monthStart);
+
+  const monthlyDebts = sumMoney(monthTrans.filter(t => t.type === 'debt').map(t => t.amount));
+  const monthlyPays = sumMoney(monthTrans.filter(t => t.type === 'pay').map(t => t.amount));
+
+  document.getElementById('monthlyDebts').textContent = formatShort(monthlyDebts);
+  document.getElementById('monthlyPayments').textContent = formatShort(monthlyPays);
+
+  // أعلى التجار
+  const top5 = suppliers.filter(s => toCents(s.balance) > 0).sort((a, b) => toCents(b.balance) - toCents(a.balance)).slice(0, 5);
+  document.getElementById('topSuppliers').innerHTML = top5.length === 0
+    ? '<div class="empty-state" style="padding:30px"><div>لا يوجد تجار بعد</div></div>'
+    : top5.map(s => supplierRowHtml(s)).join('');
+
+  // آخر المعاملات
+  const recent = loadTransactions().sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 5);
+  document.getElementById('recentTransactions').innerHTML = recent.length === 0
+    ? '<div class="empty-state" style="padding:30px"><div>لا توجد معاملات</div></div>'
+    : recent.map(t => transactionRowHtml(t, true)).join('');
+}
+
+function supplierRowHtml(s) {
+  return `
+    <div class="list-row" onclick="openSupplierDetail('${s.id}')">
+      <div class="avatar" style="background:rgba(${parseInt(s.avatarColor.substr(0,2),16)},${parseInt(s.avatarColor.substr(2,2),16)},${parseInt(s.avatarColor.substr(4,2),16)},0.15); color:#${s.avatarColor};">
+        ${getInitials(s.name)}
+      </div>
+      <div class="row-content">
+        <div class="row-title">${s.name}</div>
+        <div class="row-sub">${s.transactionsCount} معاملة${s.lastTransaction ? ' · ' + relativeDate(s.lastTransaction.date) : ''}</div>
+      </div>
+      <div class="row-end">
+        <div class="row-amount" style="color:#${STATUS_COLORS[s.status]}">${formatMoneyFull(s.balance)}</div>
+        <span class="status-badge" style="background:rgba(${parseInt(STATUS_COLORS[s.status].substr(0,2),16)},${parseInt(STATUS_COLORS[s.status].substr(2,2),16)},${parseInt(STATUS_COLORS[s.status].substr(4,2),16)},0.15); color:#${STATUS_COLORS[s.status]};">${STATUS_LABELS[s.status]}</span>
+      </div>
+    </div>
+  `;
+}
+
+function transactionRowHtml(t, showSupplier) {
+  const supplier = loadSuppliers().find(s => s.id === t.supplierId);
+  return `
+    <div class="list-row">
+      <div class="trans-icon ${t.type}">${t.type === 'debt' ? '↗' : '↘'}</div>
+      <div class="row-content">
+        <div class="row-title">${t.type === 'debt' ? 'دين جديد' : 'دفعة سداد'}${showSupplier && supplier ? ' · ' + supplier.name : ''}</div>
+        <div class="row-sub">${formatDate(t.date)}${t.invoiceNumber ? ' · ' + t.invoiceNumber : ''}</div>
+      </div>
+      <div class="row-end">
+        <div class="row-amount" style="color:#${t.type === 'debt' ? 'FF3B30' : '34C759'}">
+          ${t.type === 'debt' ? '+' : '−'}${formatMoneyFull(t.amount)}
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderSuppliers() {
+  const allSuppliers = loadSuppliers().map(getSupplierData);
+
+  // عداد الفلاتر السريعة (دائماً من كل التجار)
+  document.getElementById('count-all').textContent = allSuppliers.length;
+  document.getElementById('count-high').textContent = allSuppliers.filter(s => s.status === 'high').length;
+  document.getElementById('count-medium').textContent = allSuppliers.filter(s => s.status === 'medium').length;
+  document.getElementById('count-good').textContent = allSuppliers.filter(s => s.status === 'good').length;
+  document.getElementById('count-paid').textContent = allSuppliers.filter(s => s.status === 'paid' || s.status === 'credit').length;
+
+  // الحصول على النتائج المفلترة
+  const suppliers = getFilteredSuppliers();
+
+  // تحديث شارة عدد الفلاتر النشطة
+  const activeCount = countSupplierActiveFilters();
+  const badge = document.getElementById('supplierActiveBadge');
+  if (activeCount > 0) {
+    badge.style.display = 'inline-block';
+    badge.textContent = activeCount;
+  } else {
+    badge.style.display = 'none';
+  }
+
+  // شريط الفلاتر النشطة
+  const activeBar = document.getElementById('supplierActiveBar');
+  if (activeCount > 0) {
+    activeBar.classList.add('active');
+    const activeFilters = [];
+    if (advSupplierFilters.status !== 'all') {
+      const labels = { high: '🔴 مرتفع', medium: '🟡 متوسط', good: '🔵 جيد', paid: '🟢 مسدد' };
+      activeFilters.push(labels[advSupplierFilters.status]);
+    }
+    if (advSupplierFilters.activity !== 'all') {
+      const labels = { week: 'آخر أسبوع', month: 'آخر شهر', quarter: 'آخر 3 أشهر', inactive: 'غير نشط' };
+      activeFilters.push(labels[advSupplierFilters.activity]);
+    }
+    const minB = document.getElementById('supplierMinBalance').value;
+    const maxB = document.getElementById('supplierMaxBalance').value;
+    if (minB || maxB) activeFilters.push(`${minB || '0'} ⟶ ${maxB || '∞'}`);
+    if (advSupplierFilters.sort !== 'balance') {
+      const labels = { name: 'الاسم', recent: 'الأحدث', transactions: 'الأكثر معاملات' };
+      activeFilters.push('↕ ' + labels[advSupplierFilters.sort]);
+    }
+    document.getElementById('supplierActiveText').textContent = `${suppliers.length} نتيجة · ${activeFilters.join(' · ')}`;
+  } else {
+    activeBar.classList.remove('active');
+  }
+
+  // عرض النتائج
+  const search = document.getElementById('supplierSearch').value;
+  document.getElementById('suppliersList').innerHTML = suppliers.length === 0
+    ? `<div class="empty-state"><div class="empty-state-icon">🏢</div><div class="empty-state-title">${search || activeCount > 0 ? 'لا توجد نتائج' : 'لا يوجد تجار بعد'}</div>${!search && activeCount === 0 ? '<div class="empty-state-sub">اضغط + لإضافة تاجر جديد</div>' : '<div class="empty-state-sub">جرب تعديل الفلاتر</div>'}</div>`
+    : suppliers.map(s => supplierRowHtml(s)).join('');
+}
+
+function renderTransactions() {
+  // إجماليات الكل (قبل الفلتر) للبطاقات العلوية
+  const allTransactions = loadTransactions();
+  const totalDebts = sumMoney(allTransactions.filter(t => t.type === 'debt').map(t => t.amount));
+  const totalPays = sumMoney(allTransactions.filter(t => t.type === 'pay').map(t => t.amount));
+
+  document.getElementById('allDebts').textContent = formatShort(totalDebts);
+  document.getElementById('allPayments').textContent = formatShort(totalPays);
+
+  // المعاملات المفلترة
+  const transactions = getFilteredTransactions();
+
+  // تحديث شارة عدد الفلاتر النشطة
+  const activeCount = countTransActiveFilters();
+  const badge = document.getElementById('transActiveBadge');
+  if (badge) {
+    if (activeCount > 0) {
+      badge.style.display = 'inline-block';
+      badge.textContent = activeCount;
+    } else {
+      badge.style.display = 'none';
+    }
+  }
+
+  // شريط الفلاتر النشطة
+  const activeBar = document.getElementById('transActiveBar');
+  if (activeBar) {
+    if (activeCount > 0) {
+      activeBar.classList.add('active');
+      const activeFilters = [];
+      if (advTransFilters.type !== 'all') activeFilters.push(advTransFilters.type === 'debt' ? '↗ ديون' : '↘ مدفوعات');
+      if (advTransFilters.method !== 'all') {
+        const labels = { cash: '💵 نقدي', bank: '🏦 بنكي', cheque: '📄 شيك', deferred: '⏰ آجل', card: '💳 بطاقة' };
+        activeFilters.push(labels[advTransFilters.method]);
+      }
+      const minA = document.getElementById('transMinAmount').value;
+      const maxA = document.getElementById('transMaxAmount').value;
+      if (minA || maxA) activeFilters.push(`💰 ${minA || '0'} ⟶ ${maxA || '∞'}`);
+      const dFrom = document.getElementById('transDateFrom').value;
+      const dTo = document.getElementById('transDateTo').value;
+      if (dFrom || dTo) activeFilters.push(`📅 ${dFrom || '*'} → ${dTo || '*'}`);
+      const supId = document.getElementById('transSupplierFilter').value;
+      if (supId) {
+        const sup = loadSuppliers().find(s => s.id === supId);
+        if (sup) activeFilters.push('🏢 ' + sup.name);
+      }
+      document.getElementById('transActiveText').textContent = `${transactions.length} نتيجة · ${activeFilters.join(' · ')}`;
+    } else {
+      activeBar.classList.remove('active');
+    }
+  }
+
+  if (transactions.length === 0) {
+    const msg = activeCount > 0 ? 'لا توجد نتائج بالفلاتر الحالية' : 'لا توجد معاملات';
+    const sub = activeCount > 0 ? 'جرب تعديل الفلاتر' : '';
+    document.getElementById('transactionsList').innerHTML =
+      `<div class="empty-state"><div class="empty-state-icon">📋</div><div class="empty-state-title">${msg}</div>${sub ? '<div class="empty-state-sub">' + sub + '</div>' : ''}</div>`;
+    return;
+  }
+
+  transactions.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  // تجميع حسب التاريخ
+  const grouped = {};
+  transactions.forEach(t => {
+    const key = formatDate(t.date);
+    if (!grouped[key]) grouped[key] = [];
+    grouped[key].push(t);
+  });
+
+  let html = '';
+  Object.keys(grouped).forEach(date => {
+    html += `<div class="section-header"><span>${date}</span></div>`;
+    html += '<div class="card">';
+    html += grouped[date].map(t => transactionRowHtml(t, true)).join('');
+    html += '</div>';
+  });
+
+  document.getElementById('transactionsList').innerHTML = html;
+}
+
+function renderAnalytics() {
+  const suppliers = loadSuppliers().map(getSupplierData);
+
+  // الرسم الدائري
+  const statusCounts = { high: 0, medium: 0, good: 0, paid: 0 };
+  suppliers.forEach(s => {
+    if (s.status === 'high') statusCounts.high++;
+    else if (s.status === 'medium') statusCounts.medium++;
+    else if (s.status === 'good') statusCounts.good++;
+    else statusCounts.paid++;
+  });
+
+  const total = suppliers.length;
+  let cumulativePercent = 0;
+  let donutHtml = '<circle cx="18" cy="18" r="14" fill="none" stroke="#F2F2F7" stroke-width="6"/>';
+  let legendHtml = '';
+
+  if (total > 0) {
+    [
+      ['high', '🔴 مرتفع', 'FF3B30'],
+      ['medium', '🟡 متوسط', 'FF9500'],
+      ['good', '🔵 جيد', '007AFF'],
+      ['paid', '🟢 مسدد', '34C759']
+    ].forEach(([key, label, color]) => {
+      const count = statusCounts[key];
+      const percent = total > 0 ? (count / total) * 100 : 0;
+      if (percent > 0) {
+        const dashArray = percent + ' ' + (100 - percent);
+        const dashOffset = 25 - cumulativePercent;
+        donutHtml += `<circle cx="18" cy="18" r="14" fill="none" stroke="#${color}" stroke-width="6" stroke-dasharray="${dashArray}" stroke-dashoffset="${dashOffset}" pathLength="100" transform="rotate(-90 18 18)"/>`;
+        cumulativePercent += percent;
+      }
+      legendHtml += `
+        <div class="legend-item">
+          <div class="legend-dot" style="background:#${color}"></div>
+          <span>${label}</span>
+          <span style="margin-right:auto; color:#8E8E93;">${count}</span>
+        </div>
+      `;
+    });
+  }
+
+  donutHtml += `<text x="18" y="17" font-size="5" text-anchor="middle" fill="currentColor" font-weight="600">${total}</text>`;
+  donutHtml += `<text x="18" y="22" font-size="2.5" text-anchor="middle" fill="#8E8E93">تاجر</text>`;
+  document.getElementById('donutChart').innerHTML = donutHtml;
+  document.getElementById('donutLegend').innerHTML = legendHtml || '<div style="color:#8E8E93; font-size:12px;">لا توجد بيانات</div>';
+
+  // أعلى 5 تجار
+  const top5 = suppliers.filter(s => s.balance > 0).sort((a, b) => b.balance - a.balance).slice(0, 5);
+  const maxBalance = top5[0]?.balance || 1;
+
+  document.getElementById('topBarChart').innerHTML = top5.length === 0
+    ? '<div style="color:#8E8E93; text-align:center; padding:20px;">لا توجد بيانات</div>'
+    : top5.map(s => `
+        <div class="progress-row">
+          <div class="progress-name">${s.name}</div>
+          <div class="progress-bar"><div class="progress-fill" style="width:${(s.balance/maxBalance)*100}%; background:#${STATUS_COLORS[s.status]};"></div></div>
+          <div class="progress-amount" style="color:#${STATUS_COLORS[s.status]}">${formatShort(s.balance)}</div>
+        </div>
+      `).join('');
+
+  // الرسم الخطي - آخر 6 أشهر (بحساب دقيق)
+  const transactions = loadTransactions();
+  const months = [];
+  for (let i = 5; i >= 0; i--) {
+    const d = new Date();
+    d.setMonth(d.getMonth() - i);
+    const monthStart = new Date(d.getFullYear(), d.getMonth(), 1);
+    const monthEnd = new Date(d.getFullYear(), d.getMonth() + 1, 1);
+
+    const monthTrans = transactions.filter(t => new Date(t.date) >= monthStart && new Date(t.date) < monthEnd);
+    const debts = sumMoney(monthTrans.filter(t => t.type === 'debt').map(t => t.amount));
+    const payments = sumMoney(monthTrans.filter(t => t.type === 'pay').map(t => t.amount));
+
+    months.push({
+      name: ['ينا','فبر','مار','أبر','ماي','يون','يول','أغس','سبت','أكت','نوف','ديس'][d.getMonth()],
+      debts, payments
+    });
+  }
+
+  const maxVal = Math.max(...months.map(m => Math.max(m.debts, m.payments)), 1);
+  const w = 320, h = 160, padding = 30;
+  const xStep = (w - 2*padding) / (months.length - 1);
+
+  let chartHtml = `
+    <line x1="${padding}" y1="${h-padding}" x2="${w-padding}" y2="${h-padding}" stroke="#E5E5EA" stroke-width="0.5"/>
+    <line x1="${padding}" y1="${h-padding-40}" x2="${w-padding}" y2="${h-padding-40}" stroke="#E5E5EA" stroke-width="0.5" stroke-dasharray="2,2"/>
+    <line x1="${padding}" y1="${h-padding-80}" x2="${w-padding}" y2="${h-padding-80}" stroke="#E5E5EA" stroke-width="0.5" stroke-dasharray="2,2"/>
+  `;
+
+  const debtPoints = months.map((m, i) => {
+    const x = padding + i * xStep;
+    const y = h - padding - (m.debts / maxVal) * (h - 2*padding);
+    return `${x},${y}`;
+  }).join(' ');
+
+  const payPoints = months.map((m, i) => {
+    const x = padding + i * xStep;
+    const y = h - padding - (m.payments / maxVal) * (h - 2*padding);
+    return `${x},${y}`;
+  }).join(' ');
+
+  chartHtml += `<polyline points="${debtPoints}" fill="none" stroke="#FF3B30" stroke-width="2" stroke-linejoin="round"/>`;
+  chartHtml += `<polyline points="${payPoints}" fill="none" stroke="#34C759" stroke-width="2" stroke-linejoin="round"/>`;
+
+  months.forEach((m, i) => {
+    const x = padding + i * xStep;
+    const yDebt = h - padding - (m.debts / maxVal) * (h - 2*padding);
+    const yPay = h - padding - (m.payments / maxVal) * (h - 2*padding);
+    chartHtml += `<circle cx="${x}" cy="${yDebt}" r="3" fill="#FF3B30"/>`;
+    chartHtml += `<circle cx="${x}" cy="${yPay}" r="3" fill="#34C759"/>`;
+    chartHtml += `<text x="${x}" y="${h-10}" font-size="9" fill="#8E8E93" text-anchor="middle">${m.name}</text>`;
+  });
+
+  document.getElementById('lineChart').innerHTML = chartHtml;
+}
+
+// =================================================================
+// التصدير/الاستيراد
+// =================================================================
+
+function exportData() {
+  const data = {
+    version: '1.0',
+    exportDate: new Date().toISOString(),
+    suppliers: loadSuppliers(),
+    transactions: loadTransactions()
+  };
+
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `pharmacy_backup_${new Date().toISOString().split('T')[0]}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+
+  alert('✅ تم تصدير النسخة الاحتياطية بنجاح');
+}
+
+function importData(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    try {
+      const data = JSON.parse(e.target.result);
+      if (!data.suppliers || !data.transactions) {
+        alert('ملف غير صالح');
+        return;
+      }
+
+      if (!confirm('سيتم استبدال كل البيانات الحالية. هل أنت متأكد؟')) return;
+
+      saveSuppliers(data.suppliers);
+      saveTransactions(data.transactions);
+      render();
+      alert('✅ تم استيراد البيانات بنجاح');
+    } catch (err) {
+      alert('خطأ في قراءة الملف: ' + err.message);
+    }
+  };
+  reader.readAsText(file);
+}
+
+function clearAllData() {
+  if (!confirm('⚠️ سيتم حذف كل البيانات نهائياً. هل أنت متأكد؟')) return;
+  if (!confirm('هل أنت متأكد تماماً؟ لا يمكن التراجع!')) return;
+  localStorage.removeItem(DB_KEY_SUPPLIERS);
+  localStorage.removeItem(DB_KEY_TRANSACTIONS);
+  render();
+  alert('تم حذف كل البيانات');
+}
+
+// =================================================================
+// البيانات التجريبية
+// =================================================================
+
+function loadSampleData() {
+  if (loadSuppliers().length > 0) {
+    if (!confirm('توجد بيانات حالياً. سيتم استبدالها بالبيانات التجريبية. متابعة؟')) return;
+  }
+
+  const sampleSuppliers = [
+    { name: 'شركة الحكمة للأدوية', contactPerson: 'أحمد محمد', phoneNumber: '0912345678', openingBalance: 3500 },
+    { name: 'شركة النيل للأدوية', contactPerson: 'محمود علي', phoneNumber: '0913456789', openingBalance: 2000 },
+    { name: 'شركة الفجر الجديد', contactPerson: 'علي حسن', phoneNumber: '0914567890', openingBalance: 800 },
+    { name: 'شركة الشفاء الطبية', contactPerson: 'خالد إبراهيم', phoneNumber: '0915678901', openingBalance: 2500 },
+    { name: 'شركة الدواء العربية', contactPerson: 'سامي عبدالله', phoneNumber: '0916789012', openingBalance: 4000 },
+    { name: 'شركة المتحدة للأدوية', contactPerson: 'ياسر محمد', phoneNumber: '0917890123', openingBalance: 1500 },
+    { name: 'شركة الصحة للتوزيع', contactPerson: 'عمر سالم', phoneNumber: '0918901234', openingBalance: 400 },
+  ];
+
+  const suppliers = sampleSuppliers.map(s => ({
+    ...s, id: generateId(), createdAt: new Date().toISOString(), avatarColor: getColor(s.name)
+  }));
+
+  const transactions = [];
+  const today = new Date();
+
+  const sample = [
+    [0, 22, 'debt', 2500, 'ف-001', 'deferred'],
+    [1, 20, 'debt', 3200, 'ف-002', 'deferred'],
+    [0, 18, 'pay', 1000, 'سند-001', 'cash'],
+    [2, 16, 'debt', 1800, 'ف-003', 'deferred'],
+    [1, 13, 'pay', 1500, 'سند-002', 'bank'],
+    [3, 11, 'debt', 4500, 'ف-004', 'deferred'],
+    [0, 8, 'pay', 500, 'سند-003', 'cash'],
+    [4, 5, 'debt', 2200, 'ف-005', 'deferred'],
+    [2, 3, 'pay', 800, 'سند-004', 'cash'],
+    [3, 1, 'pay', 2000, 'سند-005', 'cheque'],
+    [0, 0, 'debt', 1700, 'ف-006', 'deferred'],
+  ];
+
+  sample.forEach(([idx, daysAgo, type, amount, inv, pm]) => {
+    const date = new Date(today);
+    date.setDate(date.getDate() - daysAgo);
+    transactions.push({
+      id: generateId(),
+      supplierId: suppliers[idx].id,
+      type, amount,
+      date: date.toISOString().split('T')[0],
+      invoiceNumber: inv,
+      paymentMethod: pm,
+      notes: '',
+      createdAt: new Date().toISOString()
+    });
+  });
+
+  saveSuppliers(suppliers);
+  saveTransactions(transactions);
+  render();
+  alert('✅ تم تحميل البيانات التجريبية');
+}
+
+// =================================================================
+// شاشة الترحيب
+// =================================================================
+
+function hideWelcome() {
+  document.getElementById('welcomeOverlay').classList.remove('active');
+  localStorage.setItem(DB_KEY_WELCOME, '1');
+}
+
+// =================================================================
+// 📊 التقارير الشهرية والسنوية
+// =================================================================
+
+const MONTH_NAMES_AR = [
+  'يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو',
+  'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'
+];
+
+const PAYMENT_LABELS = {
+  cash: 'نقدي',
+  bank: 'تحويل بنكي',
+  cheque: 'شيك',
+  deferred: 'آجل',
+  card: 'بطاقة مصرفية'
+};
+
+function openMonthlyReport() {
+  const now = new Date();
+  const monthInput = document.getElementById('monthlyReportMonth');
+  monthInput.value = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
+  renderMonthlyReport();
+  openModal('modalMonthlyReport');
+}
+
+function renderMonthlyReport() {
+  const monthInput = document.getElementById('monthlyReportMonth').value;
+  if (!monthInput) return;
+
+  const [year, month] = monthInput.split('-').map(Number);
+  const monthStart = new Date(year, month - 1, 1);
+  const monthEnd = new Date(year, month, 1);
+
+  // كل المعاملات في هذا الشهر
+  const transactions = loadTransactions().filter(t => {
+    const d = new Date(t.date);
+    return d >= monthStart && d < monthEnd;
+  });
+
+  const totalDebts = sumMoney(transactions.filter(t => t.type === 'debt').map(t => t.amount));
+  const totalPays = sumMoney(transactions.filter(t => t.type === 'pay').map(t => t.amount));
+  const netMovement = subMoney(totalDebts, totalPays);
+
+  // إحصائيات حسب طريقة الدفع
+  const paymentStats = {};
+  transactions.filter(t => t.type === 'pay').forEach(t => {
+    const method = t.paymentMethod || 'cash';
+    paymentStats[method] = addMoney(paymentStats[method] || 0, t.amount);
+  });
+
+  // أعلى التجار في هذا الشهر
+  const supplierStats = {};
+  transactions.forEach(t => {
+    if (!supplierStats[t.supplierId]) {
+      supplierStats[t.supplierId] = { debts: 0, pays: 0, count: 0 };
+    }
+    if (t.type === 'debt') {
+      supplierStats[t.supplierId].debts = addMoney(supplierStats[t.supplierId].debts, t.amount);
+    } else {
+      supplierStats[t.supplierId].pays = addMoney(supplierStats[t.supplierId].pays, t.amount);
+    }
+    supplierStats[t.supplierId].count++;
+  });
+
+  const allSuppliers = loadSuppliers();
+  const topSupplierStats = Object.entries(supplierStats)
+    .map(([id, stats]) => ({
+      supplier: allSuppliers.find(s => s.id === id),
+      ...stats
+    }))
+    .filter(s => s.supplier)
+    .sort((a, b) => toCents(b.debts) - toCents(a.debts))
+    .slice(0, 5);
+
+  // إحصائيات الأيام
+  const daysInMonth = new Date(year, month, 0).getDate();
+  const avgDebtsPerDay = fromCents(Math.round(toCents(totalDebts) / daysInMonth));
+  const avgPaysPerDay = fromCents(Math.round(toCents(totalPays) / daysInMonth));
+
+  const monthName = `${MONTH_NAMES_AR[month - 1]} ${year}`;
+  const isNetPositive = toCents(netMovement) > 0;
+
+  let html = `
+    <div class="report-summary">
+      <div class="report-summary-title">التقرير الشهري</div>
+      <div class="report-summary-period">📅 ${monthName}</div>
+
+      <div class="report-summary-grid">
+        <div class="report-summary-stat">
+          <div class="report-summary-stat-label">↗ إجمالي الديون الجديدة</div>
+          <div class="report-summary-stat-value">${formatMoneyFull(totalDebts)}</div>
+        </div>
+        <div class="report-summary-stat">
+          <div class="report-summary-stat-label">↘ إجمالي المسدد</div>
+          <div class="report-summary-stat-value">${formatMoneyFull(totalPays)}</div>
+        </div>
+        <div class="report-summary-stat">
+          <div class="report-summary-stat-label">📊 صافي الحركة</div>
+          <div class="report-summary-stat-value">${isNetPositive ? '+' : ''}${formatMoneyFull(netMovement)}</div>
+        </div>
+        <div class="report-summary-stat">
+          <div class="report-summary-stat-label">🔢 عدد المعاملات</div>
+          <div class="report-summary-stat-value">${transactions.length}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="report-section">
+      <div class="report-section-title">📈 إحصائيات يومية</div>
+      <div class="report-row">
+        <span class="report-row-label">متوسط الديون اليومية</span>
+        <span class="report-row-value" style="color:#FF3B30">${formatMoneyFull(avgDebtsPerDay)}</span>
+      </div>
+      <div class="report-row">
+        <span class="report-row-label">متوسط المدفوعات اليومية</span>
+        <span class="report-row-value" style="color:#34C759">${formatMoneyFull(avgPaysPerDay)}</span>
+      </div>
+      <div class="report-row">
+        <span class="report-row-label">عدد أيام الشهر</span>
+        <span class="report-row-value">${daysInMonth} يوم</span>
+      </div>
+      <div class="report-row">
+        <span class="report-row-label">عدد التجار النشطين</span>
+        <span class="report-row-value">${Object.keys(supplierStats).length} تاجر</span>
+      </div>
+    </div>
+  `;
+
+  if (Object.keys(paymentStats).length > 0) {
+    html += `
+      <div class="report-section">
+        <div class="report-section-title">💳 المدفوعات حسب الطريقة</div>
+        ${Object.entries(paymentStats).map(([method, amount]) => `
+          <div class="report-row">
+            <span class="report-row-label">${PAYMENT_LABELS[method] || method}</span>
+            <span class="report-row-value" style="color:#34C759">${formatMoneyFull(amount)}</span>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  if (topSupplierStats.length > 0) {
+    html += `
+      <div class="report-section">
+        <div class="report-section-title">🏆 أعلى 5 تجار (ديون جديدة)</div>
+        ${topSupplierStats.map((s, i) => `
+          <div class="report-row">
+            <span class="report-row-label">${i + 1}. ${s.supplier.name}</span>
+            <span class="report-row-value" style="color:#FF3B30">${formatMoneyFull(s.debts)}</span>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  if (transactions.length === 0) {
+    html = `
+      <div class="report-empty">
+        <div style="font-size: 50px; margin-bottom: 12px;">📭</div>
+        <div style="font-size: 16px; font-weight: 500;">لا توجد معاملات في هذا الشهر</div>
+        <div style="font-size: 13px; margin-top: 6px;">اختر شهراً آخر للعرض</div>
+      </div>
+    `;
+  }
+
+  document.getElementById('monthlyReportContent').innerHTML = html;
+}
+
+function openYearlyReport() {
+  const select = document.getElementById('yearlyReportYear');
+  const currentYear = new Date().getFullYear();
+  let options = '';
+  for (let y = currentYear; y >= currentYear - 5; y--) {
+    options += `<option value="${y}" ${y === currentYear ? 'selected' : ''}>${y}</option>`;
+  }
+  select.innerHTML = options;
+  renderYearlyReport();
+  openModal('modalYearlyReport');
+}
+
+function renderYearlyReport() {
+  const year = parseInt(document.getElementById('yearlyReportYear').value);
+  if (!year) return;
+
+  const transactions = loadTransactions().filter(t => new Date(t.date).getFullYear() === year);
+
+  const totalDebts = sumMoney(transactions.filter(t => t.type === 'debt').map(t => t.amount));
+  const totalPays = sumMoney(transactions.filter(t => t.type === 'pay').map(t => t.amount));
+  const netMovement = subMoney(totalDebts, totalPays);
+
+  // إحصائيات شهرية
+  const monthsData = [];
+  for (let m = 0; m < 12; m++) {
+    const monthStart = new Date(year, m, 1);
+    const monthEnd = new Date(year, m + 1, 1);
+    const monthTrans = transactions.filter(t => {
+      const d = new Date(t.date);
+      return d >= monthStart && d < monthEnd;
+    });
+    const debts = sumMoney(monthTrans.filter(t => t.type === 'debt').map(t => t.amount));
+    const pays = sumMoney(monthTrans.filter(t => t.type === 'pay').map(t => t.amount));
+    monthsData.push({ month: MONTH_NAMES_AR[m], debts, pays, count: monthTrans.length });
+  }
+
+  const activeMonths = monthsData.filter(m => m.count > 0).length;
+  const bestPayMonth = monthsData.reduce((best, m) => toCents(m.pays) > toCents(best.pays) ? m : best);
+  const worstDebtMonth = monthsData.reduce((worst, m) => toCents(m.debts) > toCents(worst.debts) ? m : worst);
+
+  let html = `
+    <div class="report-summary">
+      <div class="report-summary-title">التقرير السنوي</div>
+      <div class="report-summary-period">📆 سنة ${year}</div>
+
+      <div class="report-summary-grid">
+        <div class="report-summary-stat">
+          <div class="report-summary-stat-label">إجمالي الديون</div>
+          <div class="report-summary-stat-value">${formatMoneyFull(totalDebts)}</div>
+        </div>
+        <div class="report-summary-stat">
+          <div class="report-summary-stat-label">إجمالي المسدد</div>
+          <div class="report-summary-stat-value">${formatMoneyFull(totalPays)}</div>
+        </div>
+        <div class="report-summary-stat">
+          <div class="report-summary-stat-label">صافي الحركة</div>
+          <div class="report-summary-stat-value">${toCents(netMovement) > 0 ? '+' : ''}${formatMoneyFull(netMovement)}</div>
+        </div>
+        <div class="report-summary-stat">
+          <div class="report-summary-stat-label">عدد المعاملات</div>
+          <div class="report-summary-stat-value">${transactions.length}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="report-section">
+      <div class="report-section-title">📊 الملخص السنوي</div>
+      <div class="report-row">
+        <span class="report-row-label">عدد الأشهر النشطة</span>
+        <span class="report-row-value">${activeMonths} من 12</span>
+      </div>
+      <div class="report-row">
+        <span class="report-row-label">أعلى شهر في الديون</span>
+        <span class="report-row-value" style="color:#FF3B30">${worstDebtMonth.month}</span>
+      </div>
+      <div class="report-row">
+        <span class="report-row-label">أعلى شهر في المدفوعات</span>
+        <span class="report-row-value" style="color:#34C759">${bestPayMonth.month}</span>
+      </div>
+      <div class="report-row">
+        <span class="report-row-label">متوسط شهري للديون</span>
+        <span class="report-row-value" style="color:#FF3B30">${formatMoneyFull(fromCents(Math.round(toCents(totalDebts)/12)))}</span>
+      </div>
+      <div class="report-row">
+        <span class="report-row-label">متوسط شهري للمدفوعات</span>
+        <span class="report-row-value" style="color:#34C759">${formatMoneyFull(fromCents(Math.round(toCents(totalPays)/12)))}</span>
+      </div>
+    </div>
+
+    <div class="report-section">
+      <div class="report-section-title">📅 تفاصيل الأشهر</div>
+      ${monthsData.map(m => `
+        <div class="report-row">
+          <span class="report-row-label">
+            <b>${m.month}</b> · ${m.count} معاملة
+          </span>
+          <span class="report-row-value" style="font-size:11px;">
+            <span style="color:#FF3B30">+${formatMoneyFull(m.debts)}</span>
+            <span style="color:#8E8E93; margin: 0 4px;">|</span>
+            <span style="color:#34C759">${formatMoneyFull(m.pays)}</span>
+          </span>
+        </div>
+      `).join('')}
+    </div>
+  `;
+
+  if (transactions.length === 0) {
+    html = `
+      <div class="report-empty">
+        <div style="font-size: 50px; margin-bottom: 12px;">📭</div>
+        <div style="font-size: 16px; font-weight: 500;">لا توجد معاملات في سنة ${year}</div>
+      </div>
+    `;
+  }
+
+  document.getElementById('yearlyReportContent').innerHTML = html;
+}
+
+// =================================================================
+// 📄 توليد ملفات PDF
+// =================================================================
+
+function openPDFGenerator() {
+  // ملء قائمة التجار
+  const suppliers = loadSuppliers();
+  const select = document.getElementById('pdfSupplier');
+  select.innerHTML = '<option value="">اختر تاجراً</option>' +
+    suppliers.map(s => `<option value="${s.id}">${s.name}</option>`).join('');
+
+  // مسح التواريخ
+  document.getElementById('pdfDateFrom').value = '';
+  document.getElementById('pdfDateTo').value = '';
+
+  openModal('modalPDFGenerator');
+}
+
+// تحويل النص العربي لـ PDF
+function arabicText(text) {
+  return text; // jsPDF مع unicode يدعم العربية مباشرة
+}
+
+// رأس PDF موحد
+function addPDFHeader(doc, title) {
+  // خلفية ملونة للترويسة
+  doc.setFillColor(31, 78, 120);
+  doc.rect(0, 0, 210, 30, 'F');
+
+  // العنوان الرئيسي
+  doc.setTextColor(255, 255, 255);
+  doc.setFontSize(18);
+  doc.setFont('helvetica', 'bold');
+  doc.text('Pharmacy Al-Fatah', 105, 12, { align: 'center' });
+
+  doc.setFontSize(11);
+  doc.setFont('helvetica', 'normal');
+  doc.text(title, 105, 22, { align: 'center' });
+
+  // تاريخ الإصدار
+  doc.setFillColor(245, 245, 247);
+  doc.rect(0, 30, 210, 8, 'F');
+  doc.setTextColor(100, 100, 100);
+  doc.setFontSize(9);
+  const now = new Date();
+  const dateStr = `Generated: ${now.toLocaleDateString('en-GB')} - ${now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}`;
+  doc.text(dateStr, 105, 36, { align: 'center' });
+}
+
+// تذييل PDF
+function addPDFFooter(doc, pageNum, totalPages) {
+  doc.setFillColor(31, 78, 120);
+  doc.rect(0, 287, 210, 10, 'F');
+  doc.setTextColor(255, 255, 255);
+  doc.setFontSize(8);
+  doc.text(`Page ${pageNum} of ${totalPages}`, 105, 293, { align: 'center' });
+  doc.text('Pharmacy Al-Fatah - Debt Management System', 105, 296, { align: 'center' });
+}
+
+function generateSupplierPDF() {
+  const supplierId = document.getElementById('pdfSupplier').value;
+  if (!supplierId) {
+    alert('يرجى اختيار التاجر');
+    return;
+  }
+
+  const supplier = getSupplierData(loadSuppliers().find(s => s.id === supplierId));
+  if (!supplier) return;
+
+  const dateFrom = document.getElementById('pdfDateFrom').value;
+  const dateTo = document.getElementById('pdfDateTo').value;
+
+  // فلترة المعاملات حسب التاريخ
+  let transactions = supplier.transactions.slice();
+  if (dateFrom) transactions = transactions.filter(t => t.date >= dateFrom);
+  if (dateTo) transactions = transactions.filter(t => t.date <= dateTo);
+  transactions.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+  // إجماليات الفترة المختارة
+  const periodDebts = sumMoney(transactions.filter(t => t.type === 'debt').map(t => t.amount));
+  const periodPays = sumMoney(transactions.filter(t => t.type === 'pay').map(t => t.amount));
+
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF('p', 'mm', 'a4');
+
+  // الترويسة
+  addPDFHeader(doc, `Account Statement - ${supplier.name}`);
+
+  // معلومات التاجر
+  let y = 48;
+  doc.setTextColor(0, 0, 0);
+  doc.setFontSize(11);
+  doc.setFont('helvetica', 'bold');
+  doc.text('Supplier Information / معلومات التاجر', 14, y);
+
+  y += 6;
+  doc.setDrawColor(200, 200, 200);
+  doc.line(14, y, 196, y);
+
+  y += 6;
+  doc.setFontSize(10);
+  doc.setFont('helvetica', 'normal');
+
+  const supplierInfo = [
+    ['Name / الاسم:', supplier.name],
+    ['Contact / المسؤول:', supplier.contactPerson || '-'],
+    ['Phone / الهاتف:', supplier.phoneNumber || '-'],
+    ['Address / العنوان:', supplier.address || '-']
+  ];
+
+  supplierInfo.forEach(([label, value]) => {
+    doc.setFont('helvetica', 'bold');
+    doc.text(label, 14, y);
+    doc.setFont('helvetica', 'normal');
+    doc.text(String(value), 60, y);
+    y += 6;
+  });
+
+  // فترة الكشف
+  y += 4;
+  doc.setFont('helvetica', 'bold');
+  doc.text('Period / الفترة:', 14, y);
+  doc.setFont('helvetica', 'normal');
+  const periodText = (dateFrom || dateTo)
+    ? `${dateFrom || 'Start'} → ${dateTo || 'Today'}`
+    : 'All Time / كل المعاملات';
+  doc.text(periodText, 60, y);
+  y += 10;
+
+  // ملخص مالي - بطاقات ملونة
+  const cardWidth = 44;
+  const cardSpacing = 2;
+  const cardsStartX = 14;
+
+  // بطاقة الرصيد القديم
+  doc.setFillColor(255, 248, 232);
+  doc.roundedRect(cardsStartX, y, cardWidth, 22, 2, 2, 'F');
+  doc.setTextColor(255, 149, 0);
+  doc.setFontSize(8);
+  doc.text('Opening Balance', cardsStartX + cardWidth/2, y + 6, { align: 'center' });
+  doc.setFontSize(11);
+  doc.setFont('helvetica', 'bold');
+  doc.text((supplier.openingBalance || 0).toFixed(2), cardsStartX + cardWidth/2, y + 14, { align: 'center' });
+  doc.setFontSize(7);
+  doc.setFont('helvetica', 'normal');
+  doc.text('LYD', cardsStartX + cardWidth/2, y + 19, { align: 'center' });
+
+  // بطاقة الديون الجديدة
+  doc.setFillColor(255, 235, 235);
+  doc.roundedRect(cardsStartX + (cardWidth + cardSpacing), y, cardWidth, 22, 2, 2, 'F');
+  doc.setTextColor(192, 0, 0);
+  doc.setFontSize(8);
+  doc.text('New Debts', cardsStartX + (cardWidth + cardSpacing) + cardWidth/2, y + 6, { align: 'center' });
+  doc.setFontSize(11);
+  doc.setFont('helvetica', 'bold');
+  doc.text(periodDebts.toFixed(2), cardsStartX + (cardWidth + cardSpacing) + cardWidth/2, y + 14, { align: 'center' });
+  doc.setFontSize(7);
+  doc.setFont('helvetica', 'normal');
+  doc.text('LYD', cardsStartX + (cardWidth + cardSpacing) + cardWidth/2, y + 19, { align: 'center' });
+
+  // بطاقة المسدد
+  doc.setFillColor(230, 248, 235);
+  doc.roundedRect(cardsStartX + 2 * (cardWidth + cardSpacing), y, cardWidth, 22, 2, 2, 'F');
+  doc.setTextColor(0, 130, 50);
+  doc.setFontSize(8);
+  doc.text('Total Paid', cardsStartX + 2 * (cardWidth + cardSpacing) + cardWidth/2, y + 6, { align: 'center' });
+  doc.setFontSize(11);
+  doc.setFont('helvetica', 'bold');
+  doc.text(periodPays.toFixed(2), cardsStartX + 2 * (cardWidth + cardSpacing) + cardWidth/2, y + 14, { align: 'center' });
+  doc.setFontSize(7);
+  doc.setFont('helvetica', 'normal');
+  doc.text('LYD', cardsStartX + 2 * (cardWidth + cardSpacing) + cardWidth/2, y + 19, { align: 'center' });
+
+  // بطاقة الرصيد النهائي
+  doc.setFillColor(31, 78, 120);
+  doc.roundedRect(cardsStartX + 3 * (cardWidth + cardSpacing), y, cardWidth, 22, 2, 2, 'F');
+  doc.setTextColor(255, 255, 255);
+  doc.setFontSize(8);
+  doc.text('Current Balance', cardsStartX + 3 * (cardWidth + cardSpacing) + cardWidth/2, y + 6, { align: 'center' });
+  doc.setFontSize(11);
+  doc.setFont('helvetica', 'bold');
+  doc.text(supplier.balance.toFixed(2), cardsStartX + 3 * (cardWidth + cardSpacing) + cardWidth/2, y + 14, { align: 'center' });
+  doc.setFontSize(7);
+  doc.setFont('helvetica', 'normal');
+  doc.text('LYD', cardsStartX + 3 * (cardWidth + cardSpacing) + cardWidth/2, y + 19, { align: 'center' });
+
+  y += 30;
+
+  // جدول المعاملات
+  doc.setTextColor(0, 0, 0);
+  doc.setFontSize(11);
+  doc.setFont('helvetica', 'bold');
+  doc.text('Transactions / المعاملات', 14, y);
+  y += 4;
+
+  if (transactions.length === 0) {
+    y += 10;
+    doc.setFontSize(10);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(150, 150, 150);
+    doc.text('No transactions in this period', 105, y, { align: 'center' });
+  } else {
+    // حساب الرصيد الجاري لكل معاملة
+    let runningBalance = supplier.openingBalance || 0;
+    const tableData = transactions.map(t => {
+      if (t.type === 'debt') {
+        runningBalance = fromCents(toCents(runningBalance) + toCents(t.amount));
+      } else {
+        runningBalance = fromCents(toCents(runningBalance) - toCents(t.amount));
+      }
+      return [
+        t.date,
+        t.type === 'debt' ? 'Debt' : 'Payment',
+        t.invoiceNumber || '-',
+        PAYMENT_LABELS[t.paymentMethod] ? t.paymentMethod : '-',
+        t.type === 'debt' ? t.amount.toFixed(2) : '-',
+        t.type === 'pay' ? t.amount.toFixed(2) : '-',
+        runningBalance.toFixed(2)
+      ];
+    });
+
+    doc.autoTable({
+      startY: y + 2,
+      head: [['Date', 'Type', 'Invoice', 'Method', 'Debt (+)', 'Paid (-)', 'Balance']],
+      body: tableData,
+      theme: 'striped',
+      headStyles: {
+        fillColor: [31, 78, 120],
+        textColor: [255, 255, 255],
+        fontSize: 9,
+        halign: 'center'
+      },
+      bodyStyles: {
+        fontSize: 8,
+        halign: 'center'
+      },
+      columnStyles: {
+        0: { cellWidth: 22 },
+        1: { cellWidth: 20 },
+        2: { cellWidth: 25 },
+        3: { cellWidth: 24 },
+        4: { cellWidth: 26, textColor: [192, 0, 0] },
+        5: { cellWidth: 26, textColor: [0, 130, 50] },
+        6: { cellWidth: 28, fontStyle: 'bold' }
+      },
+      didDrawPage: function (data) {
+        addPDFFooter(doc, doc.internal.getNumberOfPages(), doc.internal.getNumberOfPages());
+      }
+    });
+
+    // مجموع نهائي بعد الجدول
+    const finalY = doc.lastAutoTable.finalY + 10;
+    doc.setFillColor(240, 240, 245);
+    doc.roundedRect(14, finalY, 182, 18, 2, 2, 'F');
+    doc.setTextColor(0, 0, 0);
+    doc.setFontSize(10);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Final Balance / الرصيد النهائي:', 20, finalY + 11);
+    doc.setFontSize(14);
+    doc.setTextColor(supplier.balance > 0 ? 192 : (supplier.balance < 0 ? 0 : 100), supplier.balance > 0 ? 0 : (supplier.balance < 0 ? 130 : 100), supplier.balance < 0 ? 50 : 0);
+    doc.text(`${supplier.balance.toFixed(2)} LYD`, 190, finalY + 11, { align: 'right' });
+  }
+
+  // إضافة footer لكل صفحة
+  const totalPages = doc.internal.getNumberOfPages();
+  for (let i = 1; i <= totalPages; i++) {
+    doc.setPage(i);
+    addPDFFooter(doc, i, totalPages);
+  }
+
+  // حفظ الملف
+  const fileName = `كشف_حساب_${supplier.name.replace(/\s+/g, '_')}_${new Date().toISOString().split('T')[0]}.pdf`;
+  doc.save(fileName);
+
+  closeModal('modalPDFGenerator');
+
+  if (navigator.vibrate) navigator.vibrate(50);
+}
+
+function generateQuickPDF(supplierId) {
+  // فتح Modal مع التاجر مختار مسبقاً
+  closeModal('modalSupplierDetail');
+  const suppliers = loadSuppliers();
+  const select = document.getElementById('pdfSupplier');
+  select.innerHTML = '<option value="">اختر تاجراً</option>' +
+    suppliers.map(s => `<option value="${s.id}" ${s.id === supplierId ? 'selected' : ''}>${s.name}</option>`).join('');
+  document.getElementById('pdfDateFrom').value = '';
+  document.getElementById('pdfDateTo').value = '';
+  openModal('modalPDFGenerator');
+}
+
+function generateAllSuppliersPDF() {
+  const suppliers = loadSuppliers().map(getSupplierData);
+  if (suppliers.length === 0) {
+    alert('لا يوجد تجار في النظام');
+    return;
+  }
+
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF('p', 'mm', 'a4');
+
+  addPDFHeader(doc, 'Comprehensive Suppliers Report');
+
+  let y = 48;
+  doc.setTextColor(0, 0, 0);
+  doc.setFontSize(11);
+  doc.setFont('helvetica', 'bold');
+  doc.text('Summary / الملخص العام', 14, y);
+  y += 4;
+
+  // إجماليات
+  const totalOpening = sumMoney(suppliers.map(s => s.openingBalance || 0));
+  const totalDebts = sumMoney(suppliers.map(s => s.totalNewDebts));
+  const totalPays = sumMoney(suppliers.map(s => s.totalPaid));
+  const totalBalance = sumMoney(suppliers.map(s => s.balance));
+
+  // بطاقات الملخص
+  y += 4;
+  const cardWidth = 44;
+  const cardsX = 14;
+
+  [
+    { label: 'Total Opening', value: totalOpening.toFixed(2), color: [255, 149, 0] },
+    { label: 'Total Debts', value: totalDebts.toFixed(2), color: [192, 0, 0] },
+    { label: 'Total Paid', value: totalPays.toFixed(2), color: [0, 130, 50] },
+    { label: 'Net Balance', value: totalBalance.toFixed(2), color: [31, 78, 120] }
+  ].forEach((card, i) => {
+    const x = cardsX + i * (cardWidth + 2);
+    doc.setFillColor(...card.color);
+    doc.roundedRect(x, y, cardWidth, 20, 2, 2, 'F');
+    doc.setTextColor(255, 255, 255);
+    doc.setFontSize(8);
+    doc.text(card.label, x + cardWidth/2, y + 6, { align: 'center' });
+    doc.setFontSize(11);
+    doc.setFont('helvetica', 'bold');
+    doc.text(card.value, x + cardWidth/2, y + 14, { align: 'center' });
+    doc.setFontSize(7);
+    doc.setFont('helvetica', 'normal');
+    doc.text('LYD', x + cardWidth/2, y + 18, { align: 'center' });
+  });
+
+  y += 28;
+
+  // عدد التجار حسب الحالة
+  doc.setTextColor(0, 0, 0);
+  doc.setFontSize(10);
+  doc.setFont('helvetica', 'bold');
+  doc.text(`Total Suppliers: ${suppliers.length}`, 14, y);
+  y += 6;
+
+  const statusCounts = {
+    high: suppliers.filter(s => s.status === 'high').length,
+    medium: suppliers.filter(s => s.status === 'medium').length,
+    good: suppliers.filter(s => s.status === 'good').length,
+    paid: suppliers.filter(s => s.status === 'paid' || s.status === 'credit').length
+  };
+
+  doc.setFontSize(9);
+  doc.setFont('helvetica', 'normal');
+  doc.text(`High Debt: ${statusCounts.high}  |  Medium: ${statusCounts.medium}  |  Good: ${statusCounts.good}  |  Paid: ${statusCounts.paid}`, 14, y);
+  y += 8;
+
+  // جدول التجار
+  const tableData = suppliers
+    .sort((a, b) => toCents(b.balance) - toCents(a.balance))
+    .map((s, i) => [
+      (i + 1).toString(),
+      s.name,
+      (s.openingBalance || 0).toFixed(2),
+      s.totalNewDebts.toFixed(2),
+      s.totalPaid.toFixed(2),
+      s.balance.toFixed(2),
+      s.status === 'high' ? 'High' :
+      s.status === 'medium' ? 'Medium' :
+      s.status === 'good' ? 'Good' :
+      s.status === 'credit' ? 'Credit' : 'Paid'
+    ]);
+
+  doc.autoTable({
+    startY: y,
+    head: [['#', 'Supplier Name', 'Opening', 'New Debts', 'Paid', 'Balance', 'Status']],
+    body: tableData,
+    theme: 'striped',
+    headStyles: {
+      fillColor: [31, 78, 120],
+      textColor: [255, 255, 255],
+      fontSize: 9,
+      halign: 'center'
+    },
+    bodyStyles: {
+      fontSize: 8,
+      halign: 'center'
+    },
+    columnStyles: {
+      0: { cellWidth: 10 },
+      1: { cellWidth: 50, halign: 'left' },
+      2: { cellWidth: 24, textColor: [255, 149, 0] },
+      3: { cellWidth: 24, textColor: [192, 0, 0] },
+      4: { cellWidth: 24, textColor: [0, 130, 50] },
+      5: { cellWidth: 26, fontStyle: 'bold' },
+      6: { cellWidth: 22 }
+    }
+  });
+
+  // إضافة footer
+  const totalPages = doc.internal.getNumberOfPages();
+  for (let i = 1; i <= totalPages; i++) {
+    doc.setPage(i);
+    addPDFFooter(doc, i, totalPages);
+  }
+
+  const fileName = `تقرير_شامل_${new Date().toISOString().split('T')[0]}.pdf`;
+  doc.save(fileName);
+
+  if (navigator.vibrate) navigator.vibrate(50);
+}
+
+function exportMonthlyReportPDF() {
+  const monthInput = document.getElementById('monthlyReportMonth').value;
+  if (!monthInput) return;
+
+  const [year, month] = monthInput.split('-').map(Number);
+  const monthStart = new Date(year, month - 1, 1);
+  const monthEnd = new Date(year, month, 1);
+
+  const transactions = loadTransactions().filter(t => {
+    const d = new Date(t.date);
+    return d >= monthStart && d < monthEnd;
+  });
+
+  const totalDebts = sumMoney(transactions.filter(t => t.type === 'debt').map(t => t.amount));
+  const totalPays = sumMoney(transactions.filter(t => t.type === 'pay').map(t => t.amount));
+  const netMovement = subMoney(totalDebts, totalPays);
+
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF('p', 'mm', 'a4');
+
+  const monthName = `${MONTH_NAMES_AR[month - 1]} ${year}`;
+  addPDFHeader(doc, `Monthly Report - ${monthName}`);
+
+  let y = 48;
+  doc.setTextColor(0, 0, 0);
+  doc.setFontSize(12);
+  doc.setFont('helvetica', 'bold');
+  doc.text(`Report Period: ${monthName}`, 105, y, { align: 'center' });
+  y += 10;
+
+  // بطاقات الملخص
+  const cardWidth = 60;
+  const cardsX = 14;
+
+  [
+    { label: 'New Debts', value: totalDebts.toFixed(2), color: [192, 0, 0] },
+    { label: 'Total Paid', value: totalPays.toFixed(2), color: [0, 130, 50] },
+    { label: 'Net Movement', value: (toCents(netMovement) > 0 ? '+' : '') + netMovement.toFixed(2), color: [31, 78, 120] }
+  ].forEach((card, i) => {
+    const x = cardsX + i * (cardWidth + 1);
+    doc.setFillColor(...card.color);
+    doc.roundedRect(x, y, cardWidth, 25, 2, 2, 'F');
+    doc.setTextColor(255, 255, 255);
+    doc.setFontSize(9);
+    doc.text(card.label, x + cardWidth/2, y + 7, { align: 'center' });
+    doc.setFontSize(13);
+    doc.setFont('helvetica', 'bold');
+    doc.text(card.value, x + cardWidth/2, y + 16, { align: 'center' });
+    doc.setFontSize(7);
+    doc.setFont('helvetica', 'normal');
+    doc.text('LYD', x + cardWidth/2, y + 22, { align: 'center' });
+  });
+
+  y += 32;
+
+  // جدول المعاملات
+  if (transactions.length > 0) {
+    transactions.sort((a, b) => new Date(a.date) - new Date(b.date));
+    const allSuppliers = loadSuppliers();
+
+    const tableData = transactions.map(t => {
+      const supplier = allSuppliers.find(s => s.id === t.supplierId);
+      return [
+        t.date,
+        supplier ? supplier.name : '-',
+        t.type === 'debt' ? 'Debt' : 'Payment',
+        t.invoiceNumber || '-',
+        t.type === 'debt' ? t.amount.toFixed(2) : '-',
+        t.type === 'pay' ? t.amount.toFixed(2) : '-'
+      ];
+    });
+
+    doc.setFontSize(11);
+    doc.setFont('helvetica', 'bold');
+    doc.text(`Transactions (${transactions.length})`, 14, y);
+    y += 4;
+
+    doc.autoTable({
+      startY: y + 2,
+      head: [['Date', 'Supplier', 'Type', 'Invoice', 'Debt (+)', 'Paid (-)']],
+      body: tableData,
+      theme: 'striped',
+      headStyles: { fillColor: [31, 78, 120], textColor: [255, 255, 255], fontSize: 9, halign: 'center' },
+      bodyStyles: { fontSize: 8, halign: 'center' },
+      columnStyles: {
+        0: { cellWidth: 24 },
+        1: { cellWidth: 50, halign: 'left' },
+        2: { cellWidth: 22 },
+        3: { cellWidth: 28 },
+        4: { cellWidth: 28, textColor: [192, 0, 0] },
+        5: { cellWidth: 28, textColor: [0, 130, 50] }
+      }
+    });
+  } else {
+    doc.setFontSize(11);
+    doc.setTextColor(150, 150, 150);
+    doc.text('No transactions in this period', 105, y + 20, { align: 'center' });
+  }
+
+  const totalPages = doc.internal.getNumberOfPages();
+  for (let i = 1; i <= totalPages; i++) {
+    doc.setPage(i);
+    addPDFFooter(doc, i, totalPages);
+  }
+
+  const fileName = `تقرير_شهري_${year}_${String(month).padStart(2,'0')}.pdf`;
+  doc.save(fileName);
+}
+
+function exportYearlyReportPDF() {
+  const year = parseInt(document.getElementById('yearlyReportYear').value);
+  if (!year) return;
+
+  const transactions = loadTransactions().filter(t => new Date(t.date).getFullYear() === year);
+  const totalDebts = sumMoney(transactions.filter(t => t.type === 'debt').map(t => t.amount));
+  const totalPays = sumMoney(transactions.filter(t => t.type === 'pay').map(t => t.amount));
+  const netMovement = subMoney(totalDebts, totalPays);
+
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF('p', 'mm', 'a4');
+
+  addPDFHeader(doc, `Annual Report - ${year}`);
+
+  let y = 48;
+  doc.setTextColor(0, 0, 0);
+  doc.setFontSize(14);
+  doc.setFont('helvetica', 'bold');
+  doc.text(`Annual Report ${year}`, 105, y, { align: 'center' });
+  y += 12;
+
+  // بطاقات الملخص
+  const cardWidth = 60;
+  [
+    { label: 'Total Debts', value: totalDebts.toFixed(2), color: [192, 0, 0] },
+    { label: 'Total Paid', value: totalPays.toFixed(2), color: [0, 130, 50] },
+    { label: 'Net Movement', value: netMovement.toFixed(2), color: [31, 78, 120] }
+  ].forEach((card, i) => {
+    const x = 14 + i * (cardWidth + 1);
+    doc.setFillColor(...card.color);
+    doc.roundedRect(x, y, cardWidth, 25, 2, 2, 'F');
+    doc.setTextColor(255, 255, 255);
+    doc.setFontSize(9);
+    doc.text(card.label, x + cardWidth/2, y + 7, { align: 'center' });
+    doc.setFontSize(13);
+    doc.setFont('helvetica', 'bold');
+    doc.text(card.value, x + cardWidth/2, y + 16, { align: 'center' });
+    doc.setFontSize(7);
+    doc.setFont('helvetica', 'normal');
+    doc.text('LYD', x + cardWidth/2, y + 22, { align: 'center' });
+  });
+
+  y += 32;
+
+  // جدول شهري
+  const monthsData = [];
+  for (let m = 0; m < 12; m++) {
+    const ms = new Date(year, m, 1);
+    const me = new Date(year, m + 1, 1);
+    const trans = transactions.filter(t => {
+      const d = new Date(t.date);
+      return d >= ms && d < me;
+    });
+    const d = sumMoney(trans.filter(t => t.type === 'debt').map(t => t.amount));
+    const p = sumMoney(trans.filter(t => t.type === 'pay').map(t => t.amount));
+    monthsData.push([
+      `${m + 1} - ${MONTH_NAMES_AR[m]}`,
+      trans.length.toString(),
+      d.toFixed(2),
+      p.toFixed(2),
+      subMoney(d, p).toFixed(2)
+    ]);
+  }
+
+  doc.setTextColor(0, 0, 0);
+  doc.setFontSize(11);
+  doc.setFont('helvetica', 'bold');
+  doc.text('Monthly Breakdown', 14, y);
+  y += 4;
+
+  doc.autoTable({
+    startY: y + 2,
+    head: [['Month', 'Transactions', 'New Debts', 'Paid', 'Net']],
+    body: monthsData,
+    theme: 'striped',
+    headStyles: { fillColor: [31, 78, 120], textColor: [255, 255, 255], fontSize: 9, halign: 'center' },
+    bodyStyles: { fontSize: 9, halign: 'center' },
+    columnStyles: {
+      0: { cellWidth: 40, halign: 'left' },
+      1: { cellWidth: 35 },
+      2: { cellWidth: 35, textColor: [192, 0, 0] },
+      3: { cellWidth: 35, textColor: [0, 130, 50] },
+      4: { cellWidth: 35, fontStyle: 'bold' }
+    },
+    foot: [['Total', transactions.length.toString(), totalDebts.toFixed(2), totalPays.toFixed(2), netMovement.toFixed(2)]],
+    footStyles: { fillColor: [240, 240, 245], textColor: [0, 0, 0], fontSize: 10, fontStyle: 'bold' }
+  });
+
+  const totalPages = doc.internal.getNumberOfPages();
+  for (let i = 1; i <= totalPages; i++) {
+    doc.setPage(i);
+    addPDFFooter(doc, i, totalPages);
+  }
+
+  doc.save(`تقرير_سنوي_${year}.pdf`);
+}
+
+function showInstallGuide() {
+  document.getElementById('welcomeOverlay').classList.add('active');
+}
+
+// =================================================================
+// اختبار الدقة الحسابية
+// =================================================================
+
+function testCalculations() {
+  const tests = [
+    { a: 0.1, b: 0.2, expected: 0.3, op: '+' },
+    { a: 100.50, b: 50.25, expected: 150.75, op: '+' },
+    { a: 99.99, b: 0.01, expected: 100.00, op: '+' },
+    { a: 1234.56, b: 234.56, expected: 1000.00, op: '-' },
+    { a: 0.30, b: 0.20, expected: 0.10, op: '-' },
+    { a: 999.99, b: 99.99, expected: 900.00, op: '-' },
+  ];
+
+  let results = '🧮 نتائج اختبار النظام المحاسبي:\n\n';
+  let allPassed = true;
+
+  tests.forEach((t, i) => {
+    const result = t.op === '+' ? addMoney(t.a, t.b) : subMoney(t.a, t.b);
+    const passed = moneyEquals(result, t.expected);
+    if (!passed) allPassed = false;
+    const symbol = passed ? '✅' : '❌';
+    results += `${symbol} ${t.a} ${t.op} ${t.b} = ${result}\n   متوقع: ${t.expected}\n\n`;
+  });
+
+  // اختبار جمع مصفوفة كبيرة
+  const arr = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1];
+  const sum = sumMoney(arr);
+  const sumPassed = moneyEquals(sum, 1.0);
+  if (!sumPassed) allPassed = false;
+  results += `${sumPassed ? '✅' : '❌'} جمع 0.1 عشر مرات = ${sum}\n   متوقع: 1.00\n\n`;
+
+  results += allPassed
+    ? '🎉 كل الاختبارات نجحت! الحسابات دقيقة 100%'
+    : '⚠️ بعض الاختبارات فشلت - تواصل مع الدعم';
+
+  alert(results);
+}
+
+function dismissInstall() {
+  document.getElementById('installBanner').classList.add('hidden');
+  localStorage.setItem('install_dismissed', '1');
+}
+
+// =================================================================
+// التشغيل
+// =================================================================
+
+window.addEventListener('DOMContentLoaded', () => {
+  // عرض شاشة الترحيب أول مرة
+  if (!localStorage.getItem(DB_KEY_WELCOME)) {
+    document.getElementById('welcomeOverlay').classList.add('active');
+  }
+
+  // عرض شريط التثبيت إذا لم يكن مثبتاً
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches ||
+                       window.navigator.standalone === true;
+  if (!isStandalone && !localStorage.getItem('install_dismissed')) {
+    document.getElementById('installBanner').classList.remove('hidden');
+  }
+
+  // تحميل بيانات تجريبية تلقائياً أول مرة
+  if (loadSuppliers().length === 0 && !localStorage.getItem('skipped_sample')) {
+    const sampleSuppliers = [
+      { name: 'شركة الحكمة للأدوية', contactPerson: 'أحمد محمد', phoneNumber: '0912345678', openingBalance: 3500 },
+      { name: 'شركة النيل للأدوية', contactPerson: 'محمود علي', phoneNumber: '0913456789', openingBalance: 2000 },
+      { name: 'شركة الفجر الجديد', contactPerson: 'علي حسن', phoneNumber: '0914567890', openingBalance: 800 },
+      { name: 'شركة الشفاء الطبية', contactPerson: 'خالد إبراهيم', phoneNumber: '0915678901', openingBalance: 2500 },
+      { name: 'شركة الدواء العربية', contactPerson: 'سامي عبدالله', phoneNumber: '0916789012', openingBalance: 4000 },
+    ];
+
+    const suppliers = sampleSuppliers.map(s => ({
+      ...s, id: generateId(), createdAt: new Date().toISOString(), avatarColor: getColor(s.name)
+    }));
+
+    const transactions = [];
+    const today = new Date();
+    [
+      [0, 18, 'debt', 2500, 'ف-001', 'deferred'],
+      [1, 13, 'debt', 3200, 'ف-002', 'deferred'],
+      [0, 8, 'pay', 1000, 'سند-001', 'cash'],
+      [2, 5, 'debt', 1800, 'ف-003', 'deferred'],
+      [3, 2, 'pay', 1500, 'سند-002', 'bank']
+    ].forEach(([idx, daysAgo, type, amount, inv, pm]) => {
+      const date = new Date(today);
+      date.setDate(date.getDate() - daysAgo);
+      transactions.push({
+        id: generateId(),
+        supplierId: suppliers[idx].id,
+        type, amount,
+        date: date.toISOString().split('T')[0],
+        invoiceNumber: inv,
+        paymentMethod: pm,
+        notes: '',
+        createdAt: new Date().toISOString()
+      });
+    });
+
+    saveSuppliers(suppliers);
+    saveTransactions(transactions);
+    localStorage.setItem('skipped_sample', '1');
+  }
+
+  render();
+});
+
+// منع تكبير الشاشة بالنقر المزدوج
+let lastTouchEnd = 0;
+document.addEventListener('touchend', (e) => {
+  const now = Date.now();
+  if (now - lastTouchEnd <= 300) e.preventDefault();
+  lastTouchEnd = now;
+}, false);
+
+// إغلاق Modal عند الضغط على الخلفية
+document.querySelectorAll('.modal-overlay').forEach(o => {
+  o.addEventListener('click', (e) => {
+    if (e.target === o) o.classList.remove('active');
+  });
+});
+</script>
+</body>
+</html>
